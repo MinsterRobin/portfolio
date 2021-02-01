@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+
+    height: 70px;
+    width: 100%;
+    top: 0;
+    padding: 0 80px;
+
+    color: white;
+    background: linear-gradient(182.19deg, #171717 1.84%, #0E0E0E 98.16%);
+    box-shadow: 0 3px 9px #0E0E0E;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 290px;
+}
+
+.link {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 150%;
+}
