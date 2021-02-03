@@ -1,29 +1,94 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-
+.box {
     height: 70px;
     width: 100%;
     top: 0;
-    padding: 0 80px;
-
-    color: white;
-    background: linear-gradient(182.19deg, #171717 1.84%, #0E0E0E 98.16%);
+    background: linear-gradient(#171717 1.84%, #0E0E0E 98.16%);
     box-shadow: 0 3px 9px #0E0E0E;
 }
 
-.logoContainer {
+.container {
+    max-width: 1440px;
+    width: 100%;
+    height: 70px;
+    top: 0;
+    margin: 0 auto;
+    padding: 0 20px;
+    color: white;
+}
+
+.c_nav_desktop {
+    height: 100%;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c_nav_mobile {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c_logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 290px;
 }
 
-.link {
-    font-style: normal;
+.name {
     font-weight: 600;
-    font-size: 24px;
-    line-height: 150%;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+}
+
+.link {
+    font-weight: normal;
+    font-size: 20px;
+    padding: 8px;
+
+}
+
+.language {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.hamburger_menu {
+    height: 100%;
+    display: flex;
+}
+
+/* Small devices up to 768px (Landscapes phone)*/
+@media (min-width: 576px) {
+    .container {
+        padding: 0 40px;
+    }
+}
+
+/* Medium devices up to 992px (Tablets) */
+@media (min-width: 768px) {
+    .name {
+        font-size: 24px;
+    }
+}
+
+/* Large devices up to 1200px (Desktops) */
+@media (min-width: 992px) {
+    .c_nav_desktop {
+        display: flex;
+    }
+
+    .c_nav_mobile {
+        display: none;
+    }
+}
+
+/* Extra Large devices up to 1440px (Large desktops)*/
+@media (min-width: 1200px) {
+    .container {
+        padding: 0 80px;
+    }
 }
