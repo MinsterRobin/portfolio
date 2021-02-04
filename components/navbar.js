@@ -7,7 +7,7 @@ const Navbar = () => {
             <nav className={style.container}>
                 <div className={style.c_nav_desktop}>
                     <div className={style.c_logo}>
-                        <div><Image src="/logo-navbar.svg" alt="Logo Portfolio" width="80px" height="41px"/></div>
+                        <div><Image src="/logo-navbar.svg" alt="Logo Portfolio" width="60px" height="41px"/></div>
                         <a className={style.name}>Robin Minster</a>
                     </div>
                     <a className={style.link}>À propos</a>
