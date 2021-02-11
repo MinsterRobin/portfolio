@@ -1,17 +1,14 @@
-.c_separator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 1600px;
-    height: 20px;
-}
-
 .hr {
-    background: linear-gradient(to right, #111111, #FDB7B7, #F9DCDC, #FDB7B7, #111111);
+    display: none;
+    background: linear-gradient(to right, #111111, #FDB7B7 35%, #F9DCDC 50%, #FDB7B7 65%, #111111);
     box-shadow: 0 -2px 5px #252525, 0 2px 5px #000000;
     height: 2px;
-    width: 100%;
-    max-width: 600px;
-    border: 1px transparent;
+    width: 50%;
+    border: transparent;
+}
+
+@media (min-width: 768px) {
+    .hr {
+        display: initial;
+    }
 }
