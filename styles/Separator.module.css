@@ -4,6 +4,9 @@
     box-shadow: 0 -2px 5px #252525, 0 2px 5px #000000;
     height: 2px;
     width: 50%;
+
+    margin: 100px auto ;
+
     border: transparent;
 }
 

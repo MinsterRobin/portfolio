@@ -4,6 +4,7 @@ import data from '../components/data.json';
 import Navbar from '../components/navbar';
 import About from "../components/about";
 import Separator from "../components/separator";
+import Skills from "../components/skills";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <Navbar />
         <About />
         <Separator />
+        <Skills />
       </body>
     </div>
   )
