@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 import data from '../components/data.json';
 import Navbar from '../components/navbar';
 import About from "../components/about";
-/*import Separator from "../components/separator";*/
+import Separator from "../components/separator";
 
 export default function Home() {
   return (
@@ -12,9 +12,9 @@ export default function Home() {
         <title>{data.title}</title>
       </header>
       <body className={styles.mainContainer}>
-        <Navbar/>
-        <About/>
-{/*        <Separator/>*/}
+        <Navbar />
+        <About />
+        <Separator />
       </body>
     </div>
   )
