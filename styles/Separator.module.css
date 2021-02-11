@@ -1,0 +1,8 @@
+.c_separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1600px;
+    height: 20px;
+}
