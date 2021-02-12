@@ -7,17 +7,21 @@ import Separator from "../components/separator";
 import Skills from "../components/skills";
 
 export default function Home() {
-  return (
-    <div>
-      <header>
-        <title>{data.title}</title>
-      </header>
-      <body className={styles.mainContainer}>
-        <Navbar />
-        <About />
-        <Separator />
-        <Skills />
-      </body>
-    </div>
+    return (
+        <div>
+            <header>
+                <title>{data.title}</title>
+            </header>
+            <body className={styles.mainContainer}>
+                <Navbar />
+{/*                <div className={styles.c_content}>
+
+                </div>*/}
+                <About />
+                <Separator />
+                <Skills />
+                <Separator />
+            </body>
+        </div>
   )
 }
