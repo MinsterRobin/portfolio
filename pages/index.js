@@ -5,6 +5,7 @@ import Navbar from '../components/navbar';
 import About from "../components/about";
 import Separator from "../components/separator";
 import Skills from "../components/skills";
+import Contact from "../components/contact";
 
 export default function Home() {
     return (
@@ -14,12 +15,11 @@ export default function Home() {
             </header>
             <body className={styles.mainContainer}>
                 <Navbar />
-{/*                <div className={styles.c_content}>
-
-                </div>*/}
                 <About />
                 <Separator />
                 <Skills />
+                <Separator />
+                <Contact />
                 <Separator />
             </body>
         </div>
