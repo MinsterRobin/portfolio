@@ -6,6 +6,7 @@ import About from "../components/about";
 import Separator from "../components/separator";
 import Skills from "../components/skills";
 import Contact from "../components/contact";
+import Exps from "../components/exps";
 
 export default function Home() {
     return (
@@ -21,6 +22,8 @@ export default function Home() {
                 <Separator />
                 <Contact />
                 <Separator />
+                <Exps />
+
             </body>
         </div>
   )
