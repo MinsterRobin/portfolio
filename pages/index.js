@@ -7,6 +7,7 @@ import Separator from "../components/separator";
 import Skills from "../components/skills";
 import Contact from "../components/contact";
 import Exps from "../components/exps";
+import Footer_js from "../components/footer"
 
 export default function Home() {
     return (
@@ -16,15 +17,17 @@ export default function Home() {
             </header>
             <body className={styles.mainContainer}>
                 <Navbar />
-                <About />
-                <Separator />
-                <Skills />
-                <Separator />
-                <Contact />
-                <Separator />
-                <Exps />
-
+                <div className={styles.c_content}>
+                    <About />
+                    <Separator />
+                    <Skills />
+                    <Separator />
+                    <Contact />
+                    <Separator />
+                    <Exps />
+                </div>
+                <Footer_js />
             </body>
         </div>
-  )
+    )
 }

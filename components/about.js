@@ -5,7 +5,7 @@ import data from "../components/data";
 const About = () => {
     return (
 
-        <div className={style.c_section}>
+        <div className={style.c_section} id={"s_about"}>
 
             {/*GRID LAYOUT WRAP*/}
             <div className={style.c_grid}>
