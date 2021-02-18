@@ -1,12 +1,92 @@
 import style from "../styles/Exps.module.css";
+import Exp_Card from "../components/exp_card";
+import styled from "styled-components";
+import data from "../components/data.js";
+
+/*const C_grid = styled.div`
+    display: grid;
+    grid-template-rows: repeat(2, 200px);
+    
+    .cell1 {
+        width: 450px;
+        transition: all 0.8s;
+    }
+    
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;      
+        background-color: red;
+    }
+    
+    .cell2 {
+        z-index: 2;
+        width: 450px;
+        background-color: blue;
+    }
+    
+    .cell1:hover {
+        transform: scale(1.02, 1.02) translate(0, -240px) rotateX(1deg);
+    }
+`;*/
+
+const Card_Grid = styled.div`
+    display: grid;
+    grid-auto-rows: 150px;
+    
+    .container {
+        width: 450px;
+    }
+`;
+
+const Deck = styled.div `
+    z-index: 4;
+    height: 250px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #111111;
+    
+    .deck_hr {
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, #111111, #FDB7B7 35%, #F9DCDC 50%, #FDB7B7 65%, #111111);
+        box-shadow: 0 -2px 5px #252525, 0 2px 5px #000000;
+        margin: 0;
+        border: transparent;
+    }
+    
+    .deck_body {
+    
+    }
+`;
 
 const Exps = () => {
     return(
         <div className={style.c_section} id={"s_exps"}>
             <h2 className={style.h2}>Expériences</h2>
-            <div className={style.c_cards}>
+                <Card_Grid>
+                    {data.exps.cards.map((card)=> {
+                        return (
+                            <Exp_Card
+                                src_logo={card.src_logo} alt_logo={card.alt_logo}
+                                title={card.title} subtitle={card.subtitle}
+                                description={card.description}
+                                technos_list={card.technos_list}
+                            />
+                        )
+                    })}
+                </Card_Grid>
+                <Deck>
+                    <hr className="deck_hr" />
+                    <div className="deck_body" />
+                </Deck>
 
-                <div className={style.c_card_transform_1}>
+
+            {/*<div className={style.c_cards}>*/}
+{/*                <Exp_Card top={@100px} bot={"inherit"}/>
+                <Exp_Card top={"inherit"} bot={0}/>*/}
+{/*                <div className={style.c_card_transform_1}>
                     <div className={style.c_card}>
                         <div className={style.card_content}>
                             <img className={style.img} src={"/Logo_Sopra-Steria.svg"} alt="Logo Sopra-Steria"/>
@@ -27,9 +107,9 @@ const Exps = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*/}
 
-                <div className={style.c_card_transform_2}>
+{/*                <div className={style.c_card_transform_2}>
                     <div className={style.c_card}>
                         <div className={style.card_content}>
                             <img className={style.img} src={"/Logo_Sopra-Steria.svg"} alt="Logo Sopra-Steria"/>
@@ -51,13 +131,13 @@ const Exps = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*/}
 
-                <div className={style.c_card_deck}>
+{/*                <div className={style.c_card_deck}>
                     <hr className={style.card_deck_hr}/>
                     <div className={style.card_deck_hidder} />
-                </div>
-            </div>
+                </div>*/}
+{/*            </div>*/}
 
         </div>
     );

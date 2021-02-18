@@ -1,6 +1,6 @@
 import style from "../styles/About.module.css";
 /*import Image from "next/image"*/
-import data from "../components/data";
+import data from "../components/data.js";
 
 const About = () => {
     return (

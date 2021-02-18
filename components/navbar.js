@@ -23,17 +23,16 @@ const Mobile_Menu = styled.div`
 `;
 
 const Navbar = () => {
-    const router = useRouter();
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return(
         <header className={style.box}>
 
             <Mobile_Menu open={open}>
-                <Link>À propos</Link>
+{/*                <Link>À propos</Link>
                 <Link>Compétences</Link>
                 <Link>Expériences</Link>
-                <Link>Contact</Link>
+                <Link>Contact</Link>*/}
             </Mobile_Menu>
 
             <nav className={style.container}>
@@ -41,8 +40,6 @@ const Navbar = () => {
                     <a className={style.name} >Robin Minster</a>
                     <div className={style.c_links}>
                         <Link className={style.link} id={style.about}
-                              href={router.push("#about")}
-                            /*href={router.pathname === "/about" ? "/#about" : "#about"}*/
                             to="s_about" smooth={true} offset={-80} duration={800} >
                             À propos
                         </Link>
