@@ -1,10 +1,7 @@
 import styled from "styled-components";
-import style from "../styles/Exps.module.css";
 import { v4 as uuidv4 } from 'uuid';
 
 const Exp_Card = styled.div`
-    position: relative;
-    top: ${props => props.top};
     width: 100%;
     max-width: 450px;
     perspective: 400px;
@@ -12,7 +9,6 @@ const Exp_Card = styled.div`
     .c_card {
         min-height: 390px;
         transition: all 0.8s;
-        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -23,6 +19,10 @@ const Exp_Card = styled.div`
         box-shadow: 0 -10px 8px #0B0B0B;
     
         transform: rotateX(-1deg);
+    }
+    
+    .c_card:hover {
+        transform: scale(1.02, 1.02) translate(0, -240px) rotateX(1deg);
     }
     
     .c_card::before {
@@ -45,7 +45,8 @@ const Exp_Card = styled.div`
     }
     
     .img {
-        width: 180px;
+        max-width: 180px;
+        max-height: 50px;
     }
     
     .c_title {
@@ -71,10 +72,9 @@ const Exp_Card = styled.div`
     
     .c_list_technos {
         display: flex;
-        flex-wrap: wrap;
-    
+        flex-wrap: wrap;    
         justify-content: center;
-        gap: 10px 10px;
+        gap: 10px;
         max-width: 300px;
     }
     
@@ -89,19 +89,19 @@ const Exp_Card = styled.div`
 const Exp_card = (props) => {
   return (
       <Exp_Card>
-            <div className={style.c_card}>
-                <div className={style.card_content}>
+            <div className="c_card">
+                <div className="card_content">
 
-                    <img className={style.img} src={props.src_logo} alt={props.alt_logo}/>
+                    <img className="img" src={props.src_logo} alt={props.alt_logo}/>
 
-                    <div className={style.c_title}>
-                        <h3 className={style.h3}>{props.title}</h3>
-                        <hr className={style.hr} />
-                        <h3 className={style.h3}>{props.subtitle}</h3>
+                    <div className="c_title">
+                        <h3 className="h3">{props.title}</h3>
+                        <hr className="hr" />
+                        <h3 className="h3">{props.subtitle}</h3>
                     </div>
-                    <p className={style.p}>{props.description}</p>
+                    <p className="p">{props.description}</p>
 
-                    <div className={style.c_list_technos}>{
+                    <div className="c_list_technos">{
                             props.technos_list.map((item) => {
                                 return <p key={uuidv4()}>{item}</p>
                             })
