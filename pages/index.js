@@ -1,6 +1,6 @@
 //import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-/*import data from '../components/data.js';*/
+import data from '../components/data.js';
 import Navbar from '../components/navbar';
 import About from "../components/about";
 import Separator from "../components/separator";
@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <div>
             <header>
-                <title>gne</title>
+                <title>{data.title}</title>
             </header>
             <body className={styles.mainContainer}>
                 <Navbar />

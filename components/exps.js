@@ -2,6 +2,7 @@ import style from "../styles/Exps.module.css";
 import Exp_Card from "../components/exp_card";
 import styled from "styled-components";
 import data from "../components/data.js";
+import { v4 as uuidv4 } from 'uuid';
 
 /*const C_grid = styled.div`
     display: grid;
@@ -33,14 +34,19 @@ import data from "../components/data.js";
 
 const Card_Grid = styled.div`
     display: grid;
-    grid-auto-rows: 150px;
+    grid-auto-rows: 1fr;
     
     .container {
         width: 450px;
     }
+    
+    @media (min-width: 579px) {
+        grid-auto-rows: 150px;
+    }
 `;
 
 const Deck = styled.div `
+    display: none;
     z-index: 4;
     height: 250px;
     width: 100%;
@@ -56,8 +62,8 @@ const Deck = styled.div `
         border: transparent;
     }
     
-    .deck_body {
-    
+    @media (min-width: 579px) {
+        display: initial;
     }
 `;
 
@@ -69,6 +75,7 @@ const Exps = () => {
                     {data.exps.cards.map((card)=> {
                         return (
                             <Exp_Card
+                                key={uuidv4()}
                                 src_logo={card.src_logo} alt_logo={card.alt_logo}
                                 title={card.title} subtitle={card.subtitle}
                                 description={card.description}
@@ -79,7 +86,6 @@ const Exps = () => {
                 </Card_Grid>
                 <Deck>
                     <hr className="deck_hr" />
-                    <div className="deck_body" />
                 </Deck>
 
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import style from "../styles/Exps.module.css";
+import { v4 as uuidv4 } from 'uuid';
 
 const Exp_Card = styled.div`
     position: relative;
@@ -32,30 +33,7 @@ const Exp_Card = styled.div`
         margin: 2px;
         border-radius: 15px;
     }
-    
-    .c_card_deck {
-        display: none;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 240px;
-        max-width: 500px;
-    }
-    
-    .card_deck_hr {
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(to right, #111111, #FDB7B7 35%, #F9DCDC 50%, #FDB7B7 65%, #111111);
-        box-shadow: 0 -2px 5px #252525, 0 2px 5px #000000;
-        margin: 0;
-        border: transparent;
-    }
-    
-    .card_deck_hidder {
-        background-color: #111111;
-        height: 100%;
-    }
-    
+   
     .card_content {
         position: relative;
         display: flex;
@@ -110,7 +88,7 @@ const Exp_Card = styled.div`
 
 const Exp_card = (props) => {
   return (
-      <Exp_Card >
+      <Exp_Card>
             <div className={style.c_card}>
                 <div className={style.card_content}>
 
@@ -125,7 +103,7 @@ const Exp_card = (props) => {
 
                     <div className={style.c_list_technos}>{
                             props.technos_list.map((item) => {
-                                return <p>{item}</p>
+                                return <p key={uuidv4()}>{item}</p>
                             })
                         }
                     </div>
