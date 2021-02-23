@@ -9,7 +9,6 @@ const Exps_Section = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 100px;
     
     h2 {
         text-align: center;
@@ -35,8 +34,8 @@ const Card_Grid = styled.div`
 
 const Deck = styled.div `
     display: none;
-    z-index: 4;
-    height: 250px;
+    z-index: 1;
+    height: 240px;
     width: 100%;
     max-width: 600px;
     background-color: #111111;
