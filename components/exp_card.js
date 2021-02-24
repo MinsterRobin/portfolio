@@ -101,11 +101,10 @@ const Exp_card = (props) => {
                     </div>
                     <p className="p">{props.description}</p>
 
-                    <div className="c_list_technos">{
-                            props.technos_list.map((item) => {
-                                return <p key={uuidv4()}>{item}</p>
-                            })
-                        }
+                    <div className="c_list_technos">
+                        {props.technos_list.map((item) => {
+                            return <p key={uuidv4()}>{item}</p>
+                        })}
                     </div>
                 </div>
             </div>

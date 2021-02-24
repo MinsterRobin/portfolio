@@ -2,6 +2,8 @@ import Exp_Card from "../components/exp_card";
 import styled from "styled-components";
 import data from "../components/data.js";
 import { v4 as uuidv4 } from 'uuid';
+import Language_Context from "./language-context";
+import {useContext} from "react";
 
 /*------------------ STYLE ------------------*/
 const Exps_Section = styled.div`
@@ -56,11 +58,13 @@ const Deck = styled.div `
 
 /*------------------ COMPONENT ------------------*/
 const Exps = () => {
+    const [language] = useContext(Language_Context);
+
     return(
         <Exps_Section id={"s_exps"}>
-            <h2>Expériences</h2>
+            <h2>{data[language].exps.title}</h2>
             <Card_Grid>
-                {data.exps.cards.map((card)=> {
+                {data[language].exps.cards.map((card)=> {
                     return (
                         <Exp_Card
                             key={uuidv4()}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, {useContext, useState} from "react";
 import styled from "styled-components";
 import Language_Context from "../components/language-context";
+import data from "./data";
 
 const Mobile_Menu = styled.div`
     position: absolute;
@@ -223,26 +224,26 @@ const Navbar = () => {
                     className="mobile_link" id="about"
                     to="s_about" smooth={true} offset={-80} duration={800}
                     onClick={() => setOpen(!open)} >
-                    A Propos
+                    {data[language].nav.about}
                 </Link>
                 <Link
                     className="mobile_link" id="skills"
                     to="s_skills" smooth={true} offset={-200} duration={800}
                     onClick={() => setOpen(!open)} >
-                    Compétences
+                    {data[language].nav.skills}
                 </Link>
                 <div className="c_logo"><img className="logo" src={"/logo-navbar.svg"} alt="Logo" /></div>
                 <Link
                     className="mobile_link" id="exps"
                     to="s_exps" smooth={true} offset={-200} duration={800}
                     onClick={() => setOpen(!open)} >
-                    Expériences
+                    {data[language].nav.exps}
                 </Link>
                 <Link
                     className="mobile_link" id="contact"
                     to="s_contact" smooth={true} offset={-200} duration={800}
                     onClick={() => setOpen(!open)} >
-                    Contact
+                    {data[language].nav.contact}
                 </Link>
             </Mobile_Menu>
 
@@ -253,23 +254,23 @@ const Navbar = () => {
                         <Link
                             className="link" id="about"
                             to="s_about" smooth={true} offset={-80} duration={800} >
-                            À propos
+                            {data[language].nav.about}
                         </Link>
                         <Link
                             className="link" id="skills"
                             to="s_skills" smooth={true} offset={-200} duration={800} >
-                            Compétences
+                            {data[language].nav.skills}
                         </Link>
 
                         <Link
                             className="link" id="exps"
                             to="s_exps" smooth={true} offset={-200} duration={800} >
-                            Expériences
+                            {data[language].nav.exps}
                         </Link>
                         <Link
                             className="link" id="contact"
                             to="s_contact" smooth={true} offset={-200} duration={800} >
-                            Contact
+                            {data[language].nav.contact}
                         </Link>
                         <div className="c_logo">
                             <img className="logo" src={"/Logo-No_eye.svg"} alt="Logo" />

@@ -23,12 +23,12 @@ export default function Home() {
                     <Navbar />
                     <div className={styles.c_content}>
                         <About />
-{/*                        <Separator />
+                        <Separator />
                         <Skills />
                         <Separator />
                         <Exps/>
                         <Separator/>
-                        <Contact />*/}
+                        <Contact />
                     </div>
                     <Footer_js />
                 </body>

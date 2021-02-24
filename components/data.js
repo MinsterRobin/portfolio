@@ -1,9 +1,16 @@
 const data = {
-    name: "Robin Minster",
     title: "Robin Minster",
     url: "https://robin-minster.fr",
 
     fr: {
+        nav: {
+            name: "Robin Minster",
+            about: "À propos",
+            skills: "Compétences",
+            exps: "Expériences",
+            contact: "Contact"
+        },
+
         about: {
             h1: "Hello ! Je suis Robin.",
             h1_span: "Je suis un développeur Web full-stack.",
@@ -11,12 +18,21 @@ const data = {
         },
 
         skills: {
-
+            title: "Compétences",
+            developer: {
+                title: "Développeur",
+                src_logo: "/Pf-Developer_Icon.svg",
+                alt_logo: "Developer_Icon",
+                skills_list:["React.js","Styled Components","Express","MongoDB","MySQL","Git"]
+            },
+            designer: {
+                title: "Désigneur",
+                src_logo: "/Pf-Designer_Icon.svg",
+                alt_logo: "Designer_Icon",
+                skills_list:["Figma","Dessin Vectoriel","Mockup","Wireframing","UI Design"]
+            }
         },
 
-        contact: {
-
-        },
         exps: {
             title: "Expériences",
             cards: [
@@ -37,14 +53,73 @@ const data = {
                     technos_list: ["SoapUI","SVN","Oracle SQL Develoer","Tomcat","Maven","J2EE","IntelliJ","ALM HP"]
                 }
             ]
+        },
+
+        contact: {
+            title: "Contact",
+            h3: "Envie de me soumettre votre projet ?",
+            button: "Discutons !"
         }
     },
+
     eng: {
+        nav: {
+            name: "Robin Minster",
+            about: "About",
+            skills: "Skills",
+            exps: "Experiences",
+            contact: "Contact"
+        },
+
         about: {
             h1: "Hi ! I'm Robin.",
             h1_span: "I’m a full-stack Web developer.",
-            h2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et neque, lectus praesent in a massa feugiat tellus elementum. Proin id ullamcorper scelerisque curabitur. Facilisi purus quis morbi non phasellus ullamcorper blandit eu."
+            h2: "My name is Robin Minster, a young freelancer passionate about IT and new technologies, I have an engineering degree specializing in software engineering. As a React.js full-stack web developer, I propose to achieve your projects !"
         },
+
+        skills: {
+            title: "Skills",
+            developer: {
+                title: "Developer",
+                src_logo: "/Pf-Developer_Icon.svg",
+                alt_logo: "Developer_Icon",
+                skills_list:["React.js","Styled Components","Express","MongoDB","MySQL","Git"]
+            },
+            designer: {
+                title: "Designer",
+                src_logo: "/Pf-Designer_Icon.svg",
+                alt_logo: "Designer_Icon",
+                skills_list:["Figma","Vector drawing","Mockup","Wireframing","UI Design"]
+            }
+        },
+
+        exps: {
+            title: "Experiences",
+            cards: [
+                {
+                    src_logo: "/Logo_Sopra-Steria.svg",
+                    alt_logo: "Logo Sopra-Steria",
+                    title: "Back-End Developer",
+                    subtitle: "Technician internship",
+                    description: "Sopra Steria was selected at the end of 2012 to carry out the architecture and integration of the Army Information System (Système d'Information des Armées). In order to optimize the industrialization of the project and its management, Sopra Steria is developing its own tools coupled with the IBM Jazz software suite. I was able to participate in the development of these tools.",
+                    technos_list: ["Docker","SoapUI","IBM Jazz","Jenkins","JSON","XML","Java"]
+                },
+                {
+                    src_logo: "/Logo_Sopra-Steria.svg",
+                    alt_logo: "Logo Sopra-Steria",
+                    title: "Back-End Developer",
+                    subtitle: "Technician working student",
+                    description: "I was able to integrate a project initiated in 2009 consisting of providing technical monitoring of the SIM@T application (Land Maintenance Information System) with the aim of maintaining it in operational condition by modernizing and correcting it according to the requests of the SIMMT.",
+                    technos_list: ["SoapUI","SVN","Oracle SQL Develoer","Tomcat","Maven","J2EE","IntelliJ","ALM HP"]
+                }
+            ]
+        },
+
+        contact: {
+            title: "Contact",
+            h3: "Want to pitch your project ?",
+            button: "Let's chat !"
+        }
     }
 };
 

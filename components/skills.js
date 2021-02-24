@@ -1,40 +1,43 @@
 import style from "../styles/Skills.module.css";
+import data from "./data";
+import Language_Context from "./language-context";
+import {useContext} from "react";
 
 const Skills = () => {
-  return (
-      <div className={style.c_section} id={"s_skills"}>
-          <h2 className={style.h2}>Compétences</h2>
-          <div className={style.c_grid}>
-              <div className={style.child_1}>
-                  <div className={style.c_skill_hero}>
-                      <h3 className={style.h3}>Développeur</h3>
-                      <img src={"/Pf-Developer_Icon.svg"} alt="Developer_Icon" className={style.img}/>
-                  </div>
-                  <div className={style.c_skill_list}>
-                      <p className={style.p}>React.js</p>
-                      <p className={style.p}>Styled Components</p>
-                      <p className={style.p}>Express</p>
-                      <p className={style.p}>MongoDB</p>
-                      <p className={style.p}>MySQL</p>
-                      <p className={style.p}>Git</p>
-                  </div>
-              </div>
-              <div className={style.child_2}>
-                  <div className={style.c_skill_list}>
-                      <p className={style.p}>Figma</p>
-                      <p className={style.p}>Dessin Vectoriel</p>
-                      <p className={style.p}>Mockup</p>
-                      <p className={style.p}>Wireframing</p>
-                      <p className={style.p}>UI Design</p>
-                  </div>
-                  <div className={style.c_skill_hero}>
-                      <h3 className={style.h3}>Designer</h3>
-                      <img src={"/Pf-Designer_Icon.svg"} alt="Developer_Icon" className={style.img}/>
-                  </div>
-              </div>
-          </div>
-      </div>
-  );
+    const [language] = useContext(Language_Context);
+
+    return (
+        <div className={style.c_section} id={"s_skills"}>
+            <h2 className={style.h2}>Compétences</h2>
+            <div className={style.c_grid}>
+
+                <div className={style.child_1}>
+                    <div className={style.c_skill_hero}>
+                        <h3 className={style.h3}>{data[language].skills.developer.title}</h3>
+                        <img src={data[language].skills.developer.src_logo} alt={data[language].skills.developer.alt_logo} className={style.img}/>
+                    </div>
+                    <div className={style.c_skill_list}>
+                        {data[language].skills.developer.skills_list.map((skill) => {
+                            return(<p className={style.p}>{skill}</p>);
+                        })}
+                    </div>
+                </div>
+
+                <div className={style.child_2}>
+                    <div className={style.c_skill_list}>
+                        {data[language].skills.designer.skills_list.map((skill) => {
+                            return(<p className={style.p}>{skill}</p>);
+                        })}
+                    </div>
+                    <div className={style.c_skill_hero}>
+                        <h3 className={style.h3}>{data[language].skills.designer.title}</h3>
+                        <img src={data[language].skills.designer.src_logo} alt={data[language].skills.designer.alt_logo} className={style.img}/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    );
 };
 
 export default Skills;
