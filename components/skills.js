@@ -2,6 +2,7 @@ import style from "../styles/Skills.module.css";
 import data from "./data";
 import Language_Context from "./language-context";
 import {useContext} from "react";
+import {v4 as uuidv4} from "uuid";
 
 const Skills = () => {
     const [language] = useContext(Language_Context);
@@ -18,7 +19,7 @@ const Skills = () => {
                     </div>
                     <div className={style.c_skill_list}>
                         {data[language].skills.developer.skills_list.map((skill) => {
-                            return(<p className={style.p}>{skill}</p>);
+                            return(<p key={uuidv4()} className={style.p}>{skill}</p>);
                         })}
                     </div>
                 </div>
@@ -26,7 +27,7 @@ const Skills = () => {
                 <div className={style.child_2}>
                     <div className={style.c_skill_list}>
                         {data[language].skills.designer.skills_list.map((skill) => {
-                            return(<p className={style.p}>{skill}</p>);
+                            return(<p key={uuidv4()} className={style.p}>{skill}</p>);
                         })}
                     </div>
                     <div className={style.c_skill_hero}>
