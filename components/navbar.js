@@ -5,8 +5,6 @@ import styled from "styled-components";
 import Language_Context from "../components/language-context";
 import data from "./data";
 
-
-
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [language, setLanguage] = useContext(Language_Context);
