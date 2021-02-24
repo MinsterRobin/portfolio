@@ -1,4 +1,3 @@
-// import style from "../styles/About.module.css";
 import styled from "styled-components";
 import data from "../components/data.js";
 import Language_Context from "../components/language-context";
