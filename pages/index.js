@@ -1,5 +1,5 @@
 import Head from 'next/head';
-/*import styles from '../styles/Home.module.css';*/
+import styles from '../styles/Home.module.css';
 import data from '../components/data.js';
 import Navbar from '../components/navbar';
 import About from "../components/about";
@@ -12,13 +12,10 @@ import React, {useState} from "react";
 import Language_Context from "../components/language-context";
 import styled from "styled-components";
 
-export default function Home() {
-    const [language, setLanguage] = useState("fr");
-
-    const App = styled.div`
-        body {
+const App = styled.div`
+        .mainContainer {
             width: 100%;
-            background-color: #111111;
+            background-color: red;
             color: white;
             margin: auto;
         }
@@ -48,15 +45,19 @@ export default function Home() {
         }
     `;
 
+
+export default function Home() {
+    const [language, setLanguage] = useState("fr");
+
     return (
-        <App>
+        <div>
             <header>
                 <title>{data.title}</title>
             </header>
             <Language_Context.Provider value={[language, setLanguage]}>
-                <body className="mainContainer">
+                <body className={styles.mainContainer}>
                     <Navbar />
-                    <div className="c_content">
+                    <div className={styles.c_content}>
                         <About />
                         <Separator />
                         <Skills />
@@ -68,6 +69,6 @@ export default function Home() {
                     <Footer_js />
                 </body>
             </Language_Context.Provider>
-        </App>
+        </div>
     )
 }
