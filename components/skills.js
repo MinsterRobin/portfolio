@@ -88,7 +88,7 @@ const Skills = () => {
 
     return (
         <Skills id={"s_skills"}>
-            <h2 className="h2">Compétences</h2>
+            <h2 className="h2">{data[language].skills.title}</h2>
             <div className="c_grid">
 
                 <div className="child_1">

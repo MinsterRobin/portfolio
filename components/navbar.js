@@ -51,7 +51,7 @@ const Navbar = () => {
         }
     `;
 
-        const Nav_bar = styled.div`
+    const Nav_bar = styled.div`
         z-index: 2;
         position: fixed;
         height: 70px;

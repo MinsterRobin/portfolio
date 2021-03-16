@@ -31,7 +31,7 @@ const About_SC = styled.div`
         height: 100%;
         border-radius: 5px;
         background: linear-gradient(to left, #F9DCDC 0%, #FDB7B7 35.94%, #131313 100%, #111111 100%);
-        box-shadow: 10px 0 15px #232323, -10px 0 15px #0B0B0B;
+        box-shadow: 7px 0 15px #232323, -10px 0 15px #0B0B0B;
     }
     
     .b_img::before {
