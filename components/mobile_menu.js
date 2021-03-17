@@ -12,7 +12,7 @@ const Mobile_Menu_SC = styled.div`
     height: 100vh;
     top: 0;
     right: 0;
-    transform: translateX(${props => props.open ? "100vw" : "0vw"});
+    transform: translateX(${props => props.open ? "0vw" : "100vw"});
     
     display: flex;   
     flex-direction: column;
@@ -23,7 +23,7 @@ const Mobile_Menu_SC = styled.div`
     // background: linear-gradient(to left, #F9DCDC 0%, #FDB7B7 35.94%, #131313 100%, #111111 100%);
     overflow: hidden;
     
-    transition: all ease-in-out 400ms;
+    transition: transform ease-in-out 400ms;
   
     &::before {
         content: "";
