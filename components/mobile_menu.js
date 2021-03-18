@@ -4,12 +4,13 @@ import React, {useContext, useState} from "react";
 import styled from "styled-components";
 import Language_Context from "../components/language-context";
 import data from "./data";
+import LanguageSelector from "./LanguageSelector";
 
 const Mobile_Menu_SC = styled.div`
     position: absolute;
     z-index: 10;
     width: 100vw;
-    height: 100vh;
+    height: 101vh;
     top: 0;
     right: 0;
     transform: translateX(${props => props.open ? "0vw" : "100vw"});
@@ -20,7 +21,6 @@ const Mobile_Menu_SC = styled.div`
     justify-content: center;
     gap: 30px;
     
-    // background: linear-gradient(to left, #F9DCDC 0%, #FDB7B7 35.94%, #131313 100%, #111111 100%);
     overflow: hidden;
     
     transition: transform ease-in-out 400ms;
@@ -44,14 +44,10 @@ const Mobile_Menu_SC = styled.div`
         font-size: 20px;
         font-weight: 400;
     }
-    
-    .language-selector {
-        z-index: 1;
-    }
 `;
 
 const Mobile_Menu = (props) => {
-    const [language, setLanguage] = useContext(Language_Context);
+    const [language] = useContext(Language_Context);
 
     return(
         <Mobile_Menu_SC open={props.open}>
@@ -79,7 +75,7 @@ const Mobile_Menu = (props) => {
                 onClick={() => props.setOpen(!open)} >
                 {data[language].nav.contact}
             </Link>
-            <a className="language-selector">EN | FR</a>
+            <LanguageSelector />
         </Mobile_Menu_SC>
     );
 };

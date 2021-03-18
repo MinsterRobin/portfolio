@@ -6,6 +6,7 @@ import Language_Context from "../components/language-context";
 import data from "./data";
 import Mobile_Menu from "./mobile_menu";
 import Hamburger_Menu from "./Hamburger_Menu";
+import LanguageSelector from "./LanguageSelector";
 
 const Nav_bar = styled.div`
     z-index: 2;
@@ -131,13 +132,7 @@ const Nav_bar = styled.div`
     #contact:hover ~ .c_logo > .eye {
         right: 17px;
     }
-        
-    .language_selector {
-        cursor: pointer;
-        font-weight: normal;
-        font-size: 14px;
-    }
-    
+           
     .c_nav_mobile {
         height: 100%;
         width: 100%;
@@ -172,14 +167,6 @@ const Nav_bar = styled.div`
             display: none;
         }
     }
-`;
-
-const SpanEn_SC = styled.span`
-    text-decoration: ${props => props.language === "eng" ? 'overline' : ''}; 
-`;
-
-const SpanFr_SC = styled.span`
-    text-decoration: ${props => props.language === "fr" ? 'overline' : ''}; 
 `;
 
 const Navbar = () => {
@@ -221,14 +208,7 @@ const Navbar = () => {
 
                         <div className="c_underline"><hr className="underline"/></div>
                     </div>
-
-                    <a
-                        className="language_selector"
-                        onClick={ () => {setLanguage(language === "fr" ? "eng" : "fr")} }
-                    >
-                        <SpanEn_SC language={language} >EN</SpanEn_SC> | <SpanFr_SC language={language} >FR</SpanFr_SC>
-                    </a>
-
+                    <LanguageSelector/>
                 </div>
 
 
