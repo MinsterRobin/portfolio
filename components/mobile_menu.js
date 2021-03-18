@@ -10,10 +10,12 @@ const Mobile_Menu_SC = styled.div`
     position: absolute;
     z-index: 10;
     width: 100vw;
-    height: 101vh;
+    height: 100vh;
     top: 0;
     right: 0;
     transform: translateX(${props => props.open ? "0vw" : "100vw"});
+    
+    background-color: #111111;
     
     display: flex;   
     flex-direction: column;
@@ -21,19 +23,9 @@ const Mobile_Menu_SC = styled.div`
     justify-content: center;
     gap: 30px;
     
-    overflow: hidden;
+    overflow: hidden;    
     
     transition: transform ease-in-out 400ms;
-  
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0; right: 0; left: 0; bottom: 0;
-        //background: linear-gradient(270deg, #1B1B1B 0%, #131313 100%, #131313 100%);
-        background-color: #111111;
-        margin: 1px;
-        border-radius: 4px;
-    }
     
     @media (min-width: 992px) {
         display: none;

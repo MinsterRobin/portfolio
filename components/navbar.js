@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Language_Context from "../components/language-context";
 import data from "./data";
 import Mobile_Menu from "./mobile_menu";
-import Hamburger_Menu from "./Hamburger_Menu";
+import HamburgerMenu from "./HamburgerMenu";
 import LanguageSelector from "./LanguageSelector";
 
 const Nav_bar = styled.div`
@@ -215,7 +215,7 @@ const Navbar = () => {
                 <div className="c_nav_mobile">
                     <a className="name">Robin Minster</a>
                     <img className="logo" src={"/logo-navbar.svg"} alt="Logo Portfolio" />
-                    <Hamburger_Menu open={open} setOpen={setOpen}/>
+                    <HamburgerMenu open={open} setOpen={setOpen}/>
                 </div>
             </nav>
         </Nav_bar>

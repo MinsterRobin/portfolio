@@ -7,7 +7,7 @@ const Hamburger_Menu_SC = styled.div`
     display: flex;
 `;
 
-const Hamburger_Menu = (props) => {
+const HamburgerMenu = (props) => {
     return (
         <Hamburger_Menu_SC onClick={() => props.setOpen(!props.open)}>
             <Image src="/menu.svg" alt="Hamburger Menu" width="20px" height="20px"/>
@@ -15,5 +15,5 @@ const Hamburger_Menu = (props) => {
     );
 };
 
-export default Hamburger_Menu;
+export default HamburgerMenu;
 

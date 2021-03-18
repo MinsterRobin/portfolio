@@ -2,19 +2,102 @@ import style from "../styles/Contact.module.css";
 import data from "./data";
 import Language_Context from "./language-context";
 import {useContext} from "react";
+import styled from "styled-components";
+
+const Contact_SC = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+    .c_content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 750px;
+        border-radius: 5px;
+        background: linear-gradient(270deg, #F9DCDC 0%, #FDB7B7 35.94%, #131313 100%, #111111 100%);
+        box-shadow: 10px 0 15px #232323, -10px 0 15px #0B0B0B;
+        padding: 50px;
+        gap: 25px;
+    }
+    
+    .c_content::before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; left: 0; bottom: 0;
+        background: linear-gradient(270deg, #1B1B1B 0%, #131313 100%, #131313 100%);
+        margin: 2px;
+        border-radius: 4px;
+    }
+    
+    .b_button {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+        background: linear-gradient(270deg, #F9DCDC 0%, #FDB7B7 35.94%, #171717 99%);
+        padding: 2px;
+    }
+    
+    .b_button::before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; left: 0; bottom: 0;
+        background: #171717;
+        margin: 1px;
+        border-radius: 2px;
+    }
+    
+    .button:hover {
+        box-shadow: inset 2px 4px 5px #0B0B0B, inset -2px -4px 5px #232323;
+    }
+    
+    .button {
+        position: relative;
+        padding: 7px 40px;
+    
+        background-color: transparent;
+        font-weight: normal;
+        font-size: 16px;
+        border: none;
+    }
+    
+    h2 {
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        letter-spacing: 0.2em;
+        margin: 0 0 80px 0;
+    }
+    
+    h3 {
+        z-index: 1;
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        margin: 0;
+    }
+`;
 
 const Contact = () => {
     const [language] = useContext(Language_Context);
     return(
-        <div className={style.c_section} id={"s_contact"}>
-            <h2 className={style.h2}>{data[language].contact.title}</h2>
-            <div className={style.c_content}>
-                <h3 className={style.h3}>{data[language].contact.h3}</h3>
-                <div className={style.b_button}>
-                    <div className={style.button}>{data[language].contact.button}</div>
+        <Contact_SC className="c_section" id={"s_contact"}>
+            <h2>{data[language].contact.title}</h2>
+            <div className="c_content">
+                <h3>{data[language].contact.h3}</h3>
+                <div className="b_button">
+                    <div className="button">{data[language].contact.button}</div>
                 </div>
             </div>
-        </div>
+        </Contact_SC>
     );
 };
 
