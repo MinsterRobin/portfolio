@@ -79,7 +79,7 @@ const Footer_SC = styled.div`
 const Eye = styled.div`
     position: absolute;
     transform: translateX(${props => props.eyePos.x}) translateY(${props => props.eyePos.y});
-    transition: 70ms ease-in-out;
+    transition: ${props => props.isHover ? "0ms" : "300ms"} ease-in-out;
 `;
 
 const mapRange = (amount, fromMin, fromMax, toMin, toMax) => {
@@ -99,6 +99,7 @@ const Footer = () => {
 
 const CursorPositionGetter = (props) => {
     const [eyePos, setEyePos] = useState({x: "50px", y: "13px"});
+    const [isHover, setIsHover] = useState(false);
 
     const {
         elementDimensions: {
@@ -114,18 +115,21 @@ const CursorPositionGetter = (props) => {
         <div
             onMouseMove={() => {
                 setEyePos({
-                            x: mapRange(x, 0, window.innerWidth, 0, 85) + "px",
-                            y: mapRange(y, 0, height, 0, 28) + "px",
-                        }
-                    );
+                        x: mapRange(x, 0, window.innerWidth, 0, 85) + "px",
+                        y: mapRange(y, 0, height, 0, 28) + "px",
+                    });
                 }}
-            onMouseLeave={() => { setEyePos({x:"50px", y:"13px"})}}
+            onMouseEnter={() => {setIsHover(true)}}
+            onMouseLeave={() => {
+                setEyePos({x:"50px", y:"13px"});
+                setIsHover( false);
+            }}
         >
             <div className="c_footer_content">
                 <div className="c_logo">
                     <img className="logo" src={"/Footer-Logo.svg"} alt="Footer Logo" />
                     <div className="c_eye">
-                        <Eye eyePos={eyePos}>
+                        <Eye eyePos={eyePos} isHover={isHover}>
                             <img src={"/Eye.svg"} alt="logo-eye" />
                         </Eye>
                     </div>
