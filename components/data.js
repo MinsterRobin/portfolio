@@ -1,6 +1,7 @@
 const data = {
     title: "Robin Minster",
     url: "https://robin-minster.fr",
+    email: "minster.robin.pro@gmail.com",
 
     fr: {
         nav: {
@@ -58,6 +59,7 @@ const data = {
         contact: {
             title: "Contact",
             h3: "Envie de me soumettre votre projet ?",
+            h3_info: "Contactez moi !",
             button: "Discutons !"
         }
     },
@@ -68,7 +70,7 @@ const data = {
             about: "About",
             skills: "Skills",
             exps: "Experiences",
-            contact: "Contact"
+            contact: "Contact",
         },
 
         about: {
@@ -118,7 +120,8 @@ const data = {
         contact: {
             title: "Contact",
             h3: "Want to pitch your project ?",
-            button: "Let's chat !"
+            button: "Let's chat !",
+            h3_info: "Contact me !"
         }
     }
 };

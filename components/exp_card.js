@@ -91,7 +91,6 @@ const Exp_card = (props) => {
       <Exp_Card>
             <div className="c_card">
                 <div className="card_content">
-
                     <img className="img" src={props.src_logo} alt={props.alt_logo}/>
 
                     <div className="c_title">

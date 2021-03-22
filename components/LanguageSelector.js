@@ -1,8 +1,6 @@
-import Image from "next/image";
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import Language_Context from "../components/language-context";
-import data from "./data";
 
 const LanguageSelector_SC = styled.div`
 z-index: 2;

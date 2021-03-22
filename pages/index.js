@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import data from '../components/data.js';
 import Navbar from '../components/navbar';
 import About from "../components/about";
@@ -12,52 +11,51 @@ import React, {useState} from "react";
 import Language_Context from "../components/language-context";
 import styled from "styled-components";
 
-const App = styled.div`
-        .mainContainer {
-            width: 100%;
-            background-color: red;
-            color: white;
-            margin: auto;
+const App_SC = styled.div`
+    .mainContainer {
+        width: 100%;
+        color: white;
+        margin: auto;
+    }
+    
+    .c_main_content {
+        display: flex;
+        gap: 200px;
+        width: 100%;
+        max-width: 1600px;
+        min-width: 180px;
+        margin: 70px auto 0;
+        padding: 0 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Medium devices up to 992px (Tablets) */
+    @media (min-width: 768px) {
+        .c_main_content {
+            padding: 0 40px;
         }
         
-        .c_content {
-            display: flex;
-            gap: 200px;
-            width: 100%;
-            max-width: 1600px;
-            min-width: 180px;
-            margin: 70px auto 0;
-            padding: 0 20px;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .name {
+            font-size: 24px;
         }
-        
-        /* Medium devices up to 992px (Tablets) */
-        @media (min-width: 768px) {
-            .c_content {
-                padding: 0 40px;
-            }
-            
-            .name {
-                font-size: 24px;
-            }
-        }
-    `;
+    }
+`;
 
 
-export default function Home() {
+const Home = () => {
     const [language, setLanguage] = useState("fr");
 
     return (
-        <div>
-            <header>
+        <App_SC>
+            <Head>
                 <title>{data.title}</title>
-            </header>
+            </Head>
             <Language_Context.Provider value={[language, setLanguage]}>
-                <body className={styles.mainContainer}>
+                <main className="mainContainer">
                     <Navbar />
-                    <div className={styles.c_content}>
+                    <div className="c_main_content">
                         <About />
                         <Separator />
                         <Skills />
@@ -67,8 +65,10 @@ export default function Home() {
                         <Contact />
                     </div>
                     <Footer_js />
-                </body>
+                </main>
             </Language_Context.Provider>
-        </div>
+        </App_SC>
     )
-}
+};
+
+export default Home;

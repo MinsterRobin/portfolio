@@ -17,7 +17,7 @@ const Footer_SC = styled.div`
         border: none;
     }
     
-    .c_content {
+    .c_footer_content {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -102,7 +102,6 @@ const CursorPositionGetter = (props) => {
 
     const {
         elementDimensions: {
-            width = 0,
             height = 0
         } = {},
         position: {
@@ -113,7 +112,7 @@ const CursorPositionGetter = (props) => {
 
     return (
         <div
-            onMouseMove={(e) => {
+            onMouseMove={() => {
                 setEyePos({
                             x: mapRange(x, 0, window.innerWidth, 0, 85) + "px",
                             y: mapRange(y, 0, height, 0, 28) + "px",
@@ -122,7 +121,7 @@ const CursorPositionGetter = (props) => {
                 }}
             onMouseLeave={() => { setEyePos({x:"50px", y:"13px"})}}
         >
-            <div className="c_content">
+            <div className="c_footer_content">
                 <div className="c_logo">
                     <img className="logo" src={"/Footer-Logo.svg"} alt="Footer Logo" />
                     <div className="c_eye">

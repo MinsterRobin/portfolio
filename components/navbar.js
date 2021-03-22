@@ -1,5 +1,4 @@
-import {Link, animateScroll as Scroll} from "react-scroll";
-import Image from "next/image";
+import {Link} from "react-scroll";
 import React, {useContext, useState} from "react";
 import styled from "styled-components";
 import Language_Context from "../components/language-context";
@@ -9,7 +8,7 @@ import HamburgerMenu from "./HamburgerMenu";
 import LanguageSelector from "./LanguageSelector";
 
 const Nav_bar = styled.div`
-    z-index: 2;
+    z-index: 10;
     position: fixed;
     height: 70px;
     width: 100%;
@@ -171,11 +170,11 @@ const Nav_bar = styled.div`
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const [language, setLanguage] = useContext(Language_Context);
+    const [language] = useContext(Language_Context);
 
     return (
         <Nav_bar>
-            <Mobile_Menu open={open} setOpen={setOpen}/>
+            <Mobile_Menu open={open}/>
             <nav className="container">
                 <div className="c_nav_desktop">
                     <a className="name" id="test">Robin Minster</a>
