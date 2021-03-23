@@ -8,7 +8,7 @@ import LanguageSelector from "./LanguageSelector";
 const Mobile_Menu_SC = styled.div`
     position: absolute;    
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 70px);
     top: 70px;
     right: 0;
     transform: translateX(${props => props.open ? "0vw" : "100vw"});
@@ -25,10 +25,10 @@ const Mobile_Menu_SC = styled.div`
     
     transition: transform ease-in-out 400ms;
     
-    .c_links {
+    .c_mobile_links {
+        margin: 0;
         height: 100%;
-        max-height: 500px;
-        background-color: red;
+        max-height: 250px;
         display: flex;   
         flex-direction: column;
         align-items: center;
@@ -50,7 +50,7 @@ const Mobile_Menu = (props) => {
 
     return(
         <Mobile_Menu_SC open={props.open}>
-            <div className="c_links">
+            <div className="c_mobile_links">
                 <Link
                     className="mobile_link" id="about"
                     to="s_about" smooth={true} offset={-80} duration={800}

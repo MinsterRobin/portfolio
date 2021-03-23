@@ -174,7 +174,7 @@ const Navbar = () => {
 
     return (
         <Nav_bar>
-            <Mobile_Menu open={open}/>
+            <Mobile_Menu open={open} setOpen={setOpen}/>
             <nav className="container">
                 <div className="c_nav_desktop">
                     <a className="name" id="test">Robin Minster</a>
@@ -209,7 +209,6 @@ const Navbar = () => {
                     </div>
                     <LanguageSelector/>
                 </div>
-
 
                 <div className="c_nav_mobile">
                     <a className="name">Robin Minster</a>

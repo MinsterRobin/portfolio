@@ -40,15 +40,6 @@ const Footer_SC = styled.div`
         align-items: center;
     }
     
-    .c_social {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-    }
-    
     .c_logo {
         position: relative;
     }   
@@ -59,22 +50,6 @@ const Footer_SC = styled.div`
         left: 90px;
         width: 125px;
         height: 70px;
-    }
-    
-    .social_logo {
-        width: 20px;
-    }
-    
-    .social_ring {
-        background-color: transparent;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        transition: all 0.8s;
-    }
-    
-    .social_ring:hover {
-        transform: rotateZ(20deg);
     }
 `;
 
