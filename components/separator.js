@@ -10,9 +10,9 @@ const Separator_SC = styled.hr`
 `;
 
 const Separator = () => {
-  return(
-    <Separator_SC className={style.hr}/>
-  );
+    return(
+        <Separator_SC />
+    );
 };
 
 export default Separator;
