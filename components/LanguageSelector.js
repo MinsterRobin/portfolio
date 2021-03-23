@@ -3,18 +3,23 @@ import styled from "styled-components";
 import Language_Context from "../components/language-context";
 
 const LanguageSelector_SC = styled.div`
-z-index: 2;
+    z-index: 2;
     cursor: pointer;
     font-weight: normal;
     font-size: 14px;
+    
+    &:hover {
+        opacity: 0.85;
+        transition: 300ms ease-in-out opacity;
+    }
 `;
 
 const SpanEn_SC = styled.span`
-    text-decoration: ${props => props.language === "eng" ? 'overline' : ''}; 
+    text-decoration: ${props => props.language === "eng" ? 'overline' : ''};
 `;
 
 const SpanFr_SC = styled.span`
-    text-decoration: ${props => props.language === "fr" ? 'overline' : ''}; 
+    text-decoration: ${props => props.language === "fr" ? 'overline' : ''};
 `;
 
 const LanguageSelector = () => {

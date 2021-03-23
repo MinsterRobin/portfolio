@@ -55,6 +55,11 @@ const Nav_bar = styled.div`
         font-size: 16px;
     }
     
+    .link:hover {
+        opacity: 0.85;
+        transition: 300ms ease-in-out opacity;
+    }
+    
     #exps {
         grid-column: 4;        
     }
@@ -138,11 +143,6 @@ const Nav_bar = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    
-    .hamburger_menu {
-        height: 100%;
-        display: flex;
     }
     
     /* Medium devices up to 992px (Tablets) */

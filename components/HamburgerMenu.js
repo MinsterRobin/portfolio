@@ -5,6 +5,12 @@ const Hamburger_Menu_SC = styled.div`
     z-index: 10;
     height: 100%;
     display: flex;
+    cursor: pointer;
+    
+    &:hover {
+        opacity: 0.85;
+        transition: 300ms ease-in-out opacity;
+    }
 `;
 
 const HamburgerMenu = (props) => {

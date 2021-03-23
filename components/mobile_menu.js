@@ -15,13 +15,13 @@ const Mobile_Menu_SC = styled.div`
     
     background: linear-gradient(#0E0E0E 0%, #111111 3%);
     
-    display: flex;   
+    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     gap: 30px;
     
-    overflow: hidden;    
+    overflow: hidden;
     
     transition: transform ease-in-out 400ms;
     
@@ -42,6 +42,12 @@ const Mobile_Menu_SC = styled.div`
     .mobile_link {
         font-size: 20px;
         font-weight: 400;
+        cursor: pointer;
+    }
+    
+    .mobile_link:hover {
+        opacity: 0.85;
+        transition: 200ms ease-in-out opacity;
     }
 `;
 
