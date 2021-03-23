@@ -195,7 +195,7 @@ const Contact = () => {
                                 <CopyToClipboard text={data.email}>
                                     <img src={"/Copy.svg"} alt="Copy To Clipboard" className="img_copy" onClick={() => {
                                         setCopied(true);
-                                        setTimeout(() => {setCopied(false)}, 3000);
+                                        setTimeout(() => setCopied(false), 3000);
                                     }}/>
                                 </CopyToClipboard>
                             </div>

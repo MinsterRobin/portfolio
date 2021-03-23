@@ -56,7 +56,7 @@ const Footer_SC = styled.div`
 const Eye = styled.div`
     position: absolute;
     transform: translateX(${props => props.eyePos.x}) translateY(${props => props.eyePos.y});
-    transition: ${props => props.isHover ? "0ms" : "300ms"} ease-in-out;
+    transition: ${props => props.isHover ? "0ms" : "300ms"} ease-out;
 `;
 
 const mapRange = (amount, fromMin, fromMax, toMin, toMax) => {
@@ -75,7 +75,7 @@ const Footer = () => {
 };
 
 const CursorPositionGetter = (props) => {
-    const [eyePos, setEyePos] = useState({x: "50px", y: "13px"});
+    const [eyePos, setEyePos] = useState({x: "45px", y: "13px"});
     const [isHover, setIsHover] = useState(false);
 
     const {
@@ -96,9 +96,9 @@ const CursorPositionGetter = (props) => {
                         y: mapRange(y, 0, height, 0, 28) + "px",
                     });
                 }}
-            onMouseEnter={() => {setIsHover(true)}}
+            onMouseEnter={() => {setTimeout(()=> setIsHover(true), 300)}}
             onMouseLeave={() => {
-                setEyePos({x:"50px", y:"13px"});
+                setEyePos({x:"45px", y:"13px"});
                 setIsHover( false);
             }}
         >

@@ -12,8 +12,6 @@ const About_SC = styled.div`
 
     width: 100%;
     min-width: 180px;
-
-    color: white;
     
     .c_grid {
         display: grid;
@@ -144,7 +142,7 @@ const About = () => {
                 <h2 className="h2">{data[language].about.h2}</h2>
             </div>
         </About_SC>
-    );
+    )
 };
 
 export default About;
