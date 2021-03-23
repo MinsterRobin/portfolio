@@ -21,6 +21,7 @@ class MyDocument extends Document {
                         {sheet.getStyleElement()}
                     </>
                 )
+
             };
         } finally {
             sheet.seal();

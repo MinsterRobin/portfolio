@@ -1,5 +1,5 @@
 const data = {
-    title: "Robin Minster",
+    title: "Robin Minster - Fullstack Freelance Developer",
     url: "https://robin-minster.fr",
     email: "minster.robin.pro@gmail.com",
     socials_list: [
