@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import React, {useState} from "react";
 import ReactCursorPosition from "react-cursor-position";
+import Social from "./Social";
+import data from "./data";
 
 const Footer_SC = styled.div`
     margin-top: 150px;
@@ -136,22 +138,16 @@ const CursorPositionGetter = (props) => {
                 </div>
 
                 <div className="c_socials">
-                    <div className="c_social" >
-                        <img className="social_ring" src={"Social_Ring.svg"} alt="Social Ring"/>
-                        <img className="social_logo" src={"/Linkedin.svg"} alt={"Linkedin Logo"}/>
-                    </div>
-                    <div className="c_social" >
-                        <img className="social_ring" src={"Social_Ring.svg"} alt="Social Ring"/>
-                        <img className="social_logo" src={"/Mail.svg"} alt={"Mail Logo"}/>
-                    </div>
-                    <div className="c_social" >
-                        <img className="social_ring" src={"Social_Ring.svg"} alt="Social Ring"/>
-                        <img className="social_logo" src={"/Malt.svg"} alt={"Malt Logo"}/>
-                    </div>
-                    <div className="c_social" >
-                        <img className="social_ring" src={"Social_Ring.svg"} alt="Social Ring"/>
-                        <img className="social_logo" src={"/Github.svg"} alt={"Github Logo"}/>
-                    </div>
+                    {data.socials_list.map((social) => {
+                        return (
+                            <Social
+                                key={social.key}
+                                src_logo={social.src_logo}
+                                alt={social.alt}
+                                url={social.url}
+                            />
+                        )
+                    })}
                 </div>
             </div>
         </div>

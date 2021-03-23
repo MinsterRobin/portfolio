@@ -2,6 +2,26 @@ const data = {
     title: "Robin Minster",
     url: "https://robin-minster.fr",
     email: "minster.robin.pro@gmail.com",
+    socials_list: [
+        {
+            key: "10",
+            src_logo: "/Linkedin.svg",
+            alt: "Social Linkedin",
+            url: "https://www.linkedin.com/in/robin-minster-1a874a162/"
+        },
+        {
+            key: "11",
+            src_logo: "/Mail.svg",
+            alt: "Social Email",
+            url: "mailto:minster.robin.pro@gmail.com"
+        },
+        {
+            key: "12",
+            src_logo: "/Github.svg",
+            alt: "Social Github",
+            url: "https://github.com/MinsterRobin"
+        }
+    ],
 
     fr: {
         nav: {

@@ -179,8 +179,11 @@ const Contact = () => {
             <div className="b_content">
                 <ContactInfos_SC isOpen={isOpen}>
                     <div className="c_contact_content">
+
                         <h3 className="info_h3">{data[language].contact.h3_info}</h3>
+
                         <Email_SC>
+
                             <div className="c_email">
                                 <a
                                     className="a_email"
@@ -188,6 +191,7 @@ const Contact = () => {
                                     onMouseEnter={() => {setIsHover(!isHover)}}
                                     onMouseLeave={() => {setIsHover(!isHover)}}
                                 >{data.email}</a>
+
                                 <CopyToClipboard text={data.email}>
                                     <img src={"/Copy.svg"} alt="Copy To Clipboard" className="img_copy" onClick={() => {
                                         setCopied(true);
@@ -195,12 +199,16 @@ const Contact = () => {
                                     }}/>
                                 </CopyToClipboard>
                             </div>
+
                             <div className="c_underline_animate">
                                 <Underline_SC isHover={isHover} direction={"left"}/>
                                 <Underline_SC isHover={!isHover} direction={"right"}/>
                             </div>
+
                             <CopyLabel_SC isCopied={isCopied}>{data[language].contact.copy_label}</CopyLabel_SC>
+
                         </Email_SC>
+
                     </div>
                 </ContactInfos_SC>
 
