@@ -60,7 +60,8 @@ const data = {
             title: "Contact",
             h3: "Envie de me soumettre votre projet ?",
             h3_info: "Contactez moi !",
-            button: "Discutons !"
+            button: "Discutons !",
+            copy_label: "copié !"
         }
     },
 
@@ -121,7 +122,8 @@ const data = {
             title: "Contact",
             h3: "Want to pitch your project ?",
             button: "Let's chat !",
-            h3_info: "Contact me !"
+            h3_info: "Contact me !",
+            copy_label: "copied !"
         }
     }
 };

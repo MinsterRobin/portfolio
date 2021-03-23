@@ -107,19 +107,26 @@ const ContactInfos_SC = styled.div`
     transition: opacity 400ms ease-in-out;
     
     .info_h3 {
-        font-size: 24px;
+        font-size: 20px;
     }
 `;
 
 const Email_SC = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
     .c_email {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: 0;
     }
     
     .a_email {
-        font-size: 18px;
+        font-size: 16px;
     }
     
     .img_copy {
@@ -135,12 +142,9 @@ const Email_SC = styled.div`
     }
     
     .c_underline_animate {
+        height: 1px;
         position: relative;
-        width: 100%;
-    }
-    
-    #hackyCopyToClipboard {
-        display: none;
+        width: 100%;        
     }
 `;
 
@@ -149,16 +153,25 @@ const Underline_SC = styled.hr`
     border: none;
     height: 1px;
     width: 100%;
-    margin: 10px 0 0 0;
+    margin: 0;
     opacity: ${props => props.isHover ? "0" : "1"};
     background: linear-gradient(${props => props.direction === "left" ? "to left" : "to right"}, #F9DCDC 0%, #FDB7B7 35.94%, #171717 99%);
     transition: opacity 0.8s ease-in-out;
+`;
+
+const CopyLabel_SC = styled.p`
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 0;
+    opacity: ${props => props.isCopied ? "1" : "0"};
+    transition: opacity ease-in-out 500ms;
 `;
 
 const Contact = () => {
     const [language] = useContext(Language_Context);
     const [isOpen, setIsOpen] = useState(false);
     const [isHover, setIsHover] = useState(false);
+    const [isCopied, setCopied] = useState(false)
 
     return (
         <Contact_SC className="c_section" id={"s_contact"} >
@@ -176,13 +189,17 @@ const Contact = () => {
                                     onMouseLeave={() => {setIsHover(!isHover)}}
                                 >{data.email}</a>
                                 <CopyToClipboard text={data.email}>
-                                    <img src={"/Copy.svg"} alt="Copy To Clipboard" className="img_copy" onClick={() => {}}/>
+                                    <img src={"/Copy.svg"} alt="Copy To Clipboard" className="img_copy" onClick={() => {
+                                        setCopied(true);
+                                        setTimeout(() => {setCopied(false)}, 3000);
+                                    }}/>
                                 </CopyToClipboard>
                             </div>
                             <div className="c_underline_animate">
                                 <Underline_SC isHover={isHover} direction={"left"}/>
                                 <Underline_SC isHover={!isHover} direction={"right"}/>
                             </div>
+                            <CopyLabel_SC isCopied={isCopied}>{data[language].contact.copy_label}</CopyLabel_SC>
                         </Email_SC>
                     </div>
                 </ContactInfos_SC>
