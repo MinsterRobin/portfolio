@@ -3,7 +3,7 @@ import { ServerStyleSheet } from "styled-components";
 
 class MyDocument extends Document {
 
-    static async getInitialProps(ctx) {
+/*    static async getInitialProps(ctx) {
         const sheet = new ServerStyleSheet();
         const originalRenderPage = ctx.renderPage;
         try {
@@ -21,11 +21,20 @@ class MyDocument extends Document {
                         {sheet.getStyleElement()}
                     </>
                 )
-
             };
         } finally {
             sheet.seal();
         }
+    }*/
+
+    render() {
+        return(
+            <Html lang="fr">
+                <Head />
+                <Main/>
+                <NextScript />
+            </Html>
+        )
     }
 }
 
