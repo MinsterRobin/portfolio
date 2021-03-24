@@ -177,7 +177,7 @@ const Navbar = () => {
             <Mobile_Menu open={open} setOpen={setOpen}/>
             <nav className="container">
                 <div className="c_nav_desktop">
-                    <a className="name" id="test">Robin Minster</a>
+                    <p className="name" id="test">Robin Minster</p>
                     <div className="c_links">
                         <Link
                             className="link" id="about"
@@ -211,7 +211,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="c_nav_mobile">
-                    <a className="name">Robin Minster</a>
+                    <p className="name">Robin Minster</p>
                     <img className="logo" src={"/logo-navbar.svg"} alt="Logo Portfolio" />
                     <HamburgerMenu open={open} setOpen={setOpen}/>
                 </div>
