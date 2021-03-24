@@ -8,6 +8,7 @@ html, body {
   background-color: #111111;
   color: white;
   font-family: "Inter", serif; /*DEBUG*/
+  scroll-behavior: smooth;
 }
 
 a {

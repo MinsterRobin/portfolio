@@ -1,4 +1,3 @@
-import {Link} from "react-scroll";
 import React, {useContext, useState} from "react";
 import styled from "styled-components";
 import Language_Context from "../components/language-context";
@@ -109,31 +108,31 @@ const Nav_bar = styled.div`
         transition: 0.4s ease-in-out;
     }
     
-    #about:hover ~ .c_underline > hr {
+    #hover_about:hover ~ .c_underline > hr {
         margin-right: 510px;
     }
     
-    #skills:hover ~ .c_underline > hr {
+    #hover_skills:hover ~ .c_underline > hr {
         margin-right: 360px;
     }
     
-    #exps:hover ~ .c_underline > hr {
+    #hover_exps:hover ~ .c_underline > hr {
         margin-right: 150px;
     }
     
-    #about:hover ~ .c_logo > .eye {
+    #hover_about:hover ~ .c_logo > .eye {
         right: 27px;
     }
     
-    #skills:hover ~ .c_logo > .eye {
+    #hover_skills:hover ~ .c_logo > .eye {
         right: 24px;
     }
     
-    #exps:hover ~ .c_logo > .eye {
+    #hover_exps:hover ~ .c_logo > .eye {
         right: 20px;
     }
     
-    #contact:hover ~ .c_logo > .eye {
+    #hover_contact:hover ~ .c_logo > .eye {
         right: 17px;
     }
            
@@ -177,29 +176,36 @@ const Navbar = () => {
             <Mobile_Menu open={open} setOpen={setOpen}/>
             <nav className="container">
                 <div className="c_nav_desktop">
-                    <p className="name" id="test">Robin Minster</p>
+                    <p className="name">Robin Minster</p>
                     <div className="c_links">
-                        <Link
-                            className="link" id="about"
-                            to="s_about" smooth={true} offset={-80} duration={800} >
+                        <a
+                            href={"/#about"}
+                            id="hover_about"
+                            className="link" >
                             {data[language].nav.about}
-                        </Link>
-                        <Link
-                            className="link" id="skills"
-                            to="s_skills" smooth={true} offset={-200} duration={800} >
-                            {data[language].nav.skills}
-                        </Link>
+                        </a>
 
-                        <Link
-                            className="link" id="exps"
-                            to="s_exps" smooth={true} offset={-200} duration={800} >
+                        <a
+                            href="/#skills"
+                            className="link"
+                            id="hover_skills" >
+                            {data[language].nav.skills}
+                        </a>
+
+                        <a
+                            href="/#experiences"
+                            className="link"
+                            id="hover_exps" >
                             {data[language].nav.exps}
-                        </Link>
-                        <Link
-                            className="link" id="contact"
-                            to="s_contact" smooth={true} offset={-200} duration={800} >
+                        </a>
+
+                        <a
+                            href="/#contact"
+                            className="link"
+                            id="hover_contact" >
                             {data[language].nav.contact}
-                        </Link>
+                        </a>
+
                         <div className="c_logo">
                             <img className="logo" src={"/Logo-No_eye.svg"} alt="Logo" />
                             <div className="eye" />

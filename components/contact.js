@@ -174,7 +174,7 @@ const Contact = () => {
     const [isCopied, setCopied] = useState(false)
 
     return (
-        <Contact_SC className="c_section" id={"s_contact"} >
+        <Contact_SC className="c_section" id={"contact"} >
             <h2>{data[language].contact.title}</h2>
             <div className="b_content">
                 <ContactInfos_SC isOpen={isOpen}>

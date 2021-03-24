@@ -11,6 +11,7 @@ const Exps_Section = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding-top: 150px;
     
     h2 {
         text-align: center;
@@ -61,7 +62,7 @@ const Exps = () => {
     const [language] = useContext(Language_Context);
 
     return(
-        <Exps_Section id={"s_exps"}>
+        <Exps_Section id={"experiences"}>
             <h2>{data[language].exps.title}</h2>
             <Card_Grid>
                 {data[language].exps.cards.map((card)=> {

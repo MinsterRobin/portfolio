@@ -10,6 +10,7 @@ const Skills_SC = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding-top: 150px;
     
     .h2 {
         font-size: 30px;
@@ -87,7 +88,7 @@ const Skills = () => {
     const [language] = useContext(Language_Context);
 
     return (
-        <Skills_SC id={"s_skills"}>
+        <Skills_SC id={"skills"}>
             <h2 className="h2">{data[language].skills.title}</h2>
             <div className="c_grid">
 

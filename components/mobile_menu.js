@@ -1,4 +1,3 @@
-import {Link} from "react-scroll";
 import React, {useContext} from "react";
 import styled from "styled-components";
 import Language_Context from "../components/language-context";
@@ -57,30 +56,30 @@ const Mobile_Menu = (props) => {
     return(
         <Mobile_Menu_SC open={props.open}>
             <div className="c_mobile_links">
-                <Link
-                    className="mobile_link" id="about"
-                    to="s_about" smooth={true} offset={-80} duration={800}
+                <a
+                    href="/#about"
+                    className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
                     {data[language].nav.about}
-                </Link>
-                <Link
-                    className="mobile_link" id="skills"
-                    to="s_skills" smooth={true} offset={-200} duration={800}
+                </a>
+                <a
+                    href="/#skills"
+                    className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
                     {data[language].nav.skills}
-                </Link>
-                <Link
-                    className="mobile_link" id="exps"
-                    to="s_exps" smooth={true} offset={-200} duration={800}
+                </a>
+                <a
+                    href="/#experiences"
+                    className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
                     {data[language].nav.exps}
-                </Link>
-                <Link
-                    className="mobile_link" id="contact"
-                    to="s_contact" smooth={true} offset={-200} duration={800}
+                </a>
+                <a
+                    href="/#contact"
+                    className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
                     {data[language].nav.contact}
-                </Link>
+                </a>
                 <LanguageSelector />
             </div>
         </Mobile_Menu_SC>

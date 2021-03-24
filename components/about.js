@@ -125,7 +125,7 @@ const About = () => {
     const [language] = useContext(Language_Context);
 
     return (
-        <About_SC id={"s_about"}>
+        <About_SC id="about">
             <div className="c_grid">
                 <div className="child_1">
                     <h1 className="h1">
