@@ -31,7 +31,7 @@ const Footer_SC = styled.div`
     }
    
     .c_socials {
-        margin: 70px 0 0 0;
+        margin-top: 70px;
         display: flex;
         max-width: 750px;
         padding: 0 20px;

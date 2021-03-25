@@ -35,7 +35,6 @@ const Contact_SC = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        gap: 25px;
     }
     
     h2 {
@@ -55,7 +54,8 @@ const Contact_SC = styled.div`
         margin: 0;
     }
     
-    .b_button {      
+    .b_button {     
+        margin-top: 25px; 
         position: relative;
         display: flex;
         flex-direction: column;
