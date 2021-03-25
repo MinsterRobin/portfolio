@@ -24,7 +24,6 @@ const Footer_SC = styled.div`
         flex-direction: column;
         align-items: center;
         padding: 80px 0;
-        gap: 70px;
     }
     
     .logo {
@@ -32,6 +31,7 @@ const Footer_SC = styled.div`
     }
    
     .c_socials {
+        margin: 70px 0 0 0;
         display: flex;
         max-width: 750px;
         padding: 0 20px;
