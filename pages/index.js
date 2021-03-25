@@ -20,7 +20,6 @@ const App_SC = styled.div`
     
     .c_main_content {
         display: flex;
-        gap: 200px;
         width: 100%;
         max-width: 1600px;
         min-width: 180px;

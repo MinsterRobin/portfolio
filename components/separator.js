@@ -7,6 +7,7 @@ const Separator_SC = styled.hr`
     height: 2px;
     width: 45%;
     border: transparent;
+    margin: 200px 0;
 `;
 
 const Separator = () => {
