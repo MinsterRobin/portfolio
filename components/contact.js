@@ -9,6 +9,7 @@ const Contact_SC = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding-top: 200px;
     
     .b_content {
         position: relative;
@@ -122,7 +123,7 @@ const Email_SC = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0;
+        margin-top: 20px;
     }
     
     .a_email {

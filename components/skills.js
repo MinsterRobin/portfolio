@@ -10,7 +10,7 @@ const Skills_SC = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 150px;
+    padding-top: 200px;
     
     .h2 {
         font-size: 30px;
