@@ -16,6 +16,7 @@ const App_SC = styled.div`
         width: 100%;
         color: white;
         margin: auto;
+        overflow: hidden;
     }
     
     .c_main_content {

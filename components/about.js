@@ -2,7 +2,7 @@ import styled from "styled-components";
 import data from "../components/data.js";
 import Language_Context from "../components/language-context";
 import {useContext} from "react";
-import {FadeInUp} from "./animations";
+import {FadeIn, FadeInUp, FadeInRight} from "./animations";
 
 const About_SC = styled.div`
     display: flex;
@@ -19,6 +19,13 @@ const About_SC = styled.div`
         grid-template: auto 1fr auto  / 1fr;        
         width: 100%;
         gap: 40px;
+    }
+    
+    .child_1 {
+        overflow: hidden;
+    }
+    .child_3 {
+        overflow: hidden;
     }
     
     .b_img {
@@ -126,27 +133,39 @@ const About = () => {
     const [language] = useContext(Language_Context);
 
     return (
-        <FadeInUp duration="0.5s">
-            <About_SC id="about">
-                <div className="c_grid">
-                    <div className="child_1">
-                        <h1 className="h1">
-                            {data[language].about.h1}<br/><span className="h1_span">{data[language].about.h1_span}</span>
-                        </h1>
-                    </div>
-                    <div className="child_2">
-                        <div className="b_img">
-                            <div className="c_img">
-                                <FadeInUp duration="1s">
-                                <img className="img" src={"/Portfolio-Logo_Big.svg"} alt="Logo Large"/>
-                                </FadeInUp>
-                            </div>
+
+        <About_SC id="about">
+            <div className="c_grid">
+
+                <div className="child_1">
+                    <FadeInRight>
+                    <h1 className="h1">
+                        {data[language].about.h1}<br/><span className="h1_span">{data[language].about.h1_span}</span>
+                    </h1>
+                    </FadeInRight>
+                </div>
+
+                <div className="child_2">
+                    <FadeIn duration="500ms">
+                    <div className="b_img">
+                        <div className="c_img">
+                            <FadeInUp duration="1s">
+                            <img className="img" src={"/Portfolio-Logo_Big.svg"} alt="Logo Large"/>
+                            </FadeInUp>
                         </div>
                     </div>
-                    <h2 className="h2">{data[language].about.h2}</h2>
+                    </FadeIn>
                 </div>
-            </About_SC>
-        </FadeInUp>
+
+                <div className="child_3">
+                    <FadeInRight duration="750ms">
+                        <h2 className="h2">{data[language].about.h2}</h2>
+                    </FadeInRight>
+                </div>
+
+            </div>
+        </About_SC>
+
     )
 };
 
