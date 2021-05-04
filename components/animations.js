@@ -12,14 +12,10 @@ const animation_fade_in = keyframes`
     }
 `;
 
-const FadeIn500 = styled.div`
-    animation: ${animation_fade_in} 0.5s ease-in;
+const FadeInUp = styled.div`
+    animation: ${animation_fade_in} ${props => props.duration || "0.5s"} ease-in;
 `;
 
-const FadeIn1000 = styled.div`
-    animation: ${animation_fade_in} 1.5s ease-in;
-`;
+export default FadeInUp;
 
-export default FadeIn500;
-
-export {FadeIn1000, FadeIn500};
+export {FadeInUp};

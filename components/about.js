@@ -2,7 +2,7 @@ import styled from "styled-components";
 import data from "../components/data.js";
 import Language_Context from "../components/language-context";
 import {useContext} from "react";
-import {FadeIn1000, FadeIn500} from "./animations";
+import {FadeInUp} from "./animations";
 
 const About_SC = styled.div`
     display: flex;
@@ -126,7 +126,7 @@ const About = () => {
     const [language] = useContext(Language_Context);
 
     return (
-        <FadeIn500>
+        <FadeInUp duration="0.5s">
             <About_SC id="about">
                 <div className="c_grid">
                     <div className="child_1">
@@ -137,16 +137,16 @@ const About = () => {
                     <div className="child_2">
                         <div className="b_img">
                             <div className="c_img">
-                                <FadeIn1000>
+                                <FadeInUp duration="1s">
                                 <img className="img" src={"/Portfolio-Logo_Big.svg"} alt="Logo Large"/>
-                                </FadeIn1000>
+                                </FadeInUp>
                             </div>
                         </div>
                     </div>
                     <h2 className="h2">{data[language].about.h2}</h2>
                 </div>
             </About_SC>
-        </FadeIn500>
+        </FadeInUp>
     )
 };
 
