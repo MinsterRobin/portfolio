@@ -2,6 +2,7 @@ import styled from "styled-components";
 import data from "../components/data.js";
 import Language_Context from "../components/language-context";
 import {useContext} from "react";
+import {FadeIn1000, FadeIn500} from "./animations";
 
 const About_SC = styled.div`
     display: flex;
@@ -125,23 +126,27 @@ const About = () => {
     const [language] = useContext(Language_Context);
 
     return (
-        <About_SC id="about">
-            <div className="c_grid">
-                <div className="child_1">
-                    <h1 className="h1">
-                        {data[language].about.h1}<br/><span className="h1_span">{data[language].about.h1_span}</span>
-                    </h1>
-                </div>
-                <div className="child_2">
-                    <div className="b_img">
-                        <div className="c_img">
-                            <img className="img" src={"/Portfolio-Logo_Big.svg"} alt="Logo Large"/>
+        <FadeIn500>
+            <About_SC id="about">
+                <div className="c_grid">
+                    <div className="child_1">
+                        <h1 className="h1">
+                            {data[language].about.h1}<br/><span className="h1_span">{data[language].about.h1_span}</span>
+                        </h1>
+                    </div>
+                    <div className="child_2">
+                        <div className="b_img">
+                            <div className="c_img">
+                                <FadeIn1000>
+                                <img className="img" src={"/Portfolio-Logo_Big.svg"} alt="Logo Large"/>
+                                </FadeIn1000>
+                            </div>
                         </div>
                     </div>
+                    <h2 className="h2">{data[language].about.h2}</h2>
                 </div>
-                <h2 className="h2">{data[language].about.h2}</h2>
-            </div>
-        </About_SC>
+            </About_SC>
+        </FadeIn500>
     )
 };
 
