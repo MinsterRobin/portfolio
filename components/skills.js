@@ -1,9 +1,10 @@
-/*import style from "../styles/Skills.module.css";*/
 import styled from "styled-components";
 import data from "./data";
 import Language_Context from "./language-context";
-import {useContext} from "react";
 import {v4 as uuidv4} from "uuid";
+import useIsInViewport from "use-is-in-viewport";
+import {FadeIn} from "./animations";
+import {useRef, useState, useContext, useEffect} from "react";
 
 const Skills_SC = styled.div`
     display: flex;
@@ -11,6 +12,8 @@ const Skills_SC = styled.div`
     align-items: center;
     width: 100%;
     padding-top: 200px;
+    opacity: ${props => props.show ? 1 : 0};
+    transition: opacity ease-in-out 2s;
     
     .h2 {
         font-size: 30px;
@@ -87,9 +90,29 @@ const Skills_SC = styled.div`
 const Skills = () => {
     const [language] = useContext(Language_Context);
 
+    const [show, setShow] = useState(false);
+
+    const scrollAnimation_ComponentRef = useRef(null);
+
+    useEffect(() => {
+        const posYFromTop = element => element.getBoundingClientRect().top;
+        const scrollAnimation_ComponentPosY = posYFromTop(scrollAnimation_ComponentRef.current);
+
+        const onScroll = () => {
+            const currentScrollPos = window.scrollY + window.innerHeight;
+            if (scrollAnimation_ComponentPosY < currentScrollPos) {
+                setShow(true);
+            }
+        };
+
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    });
+
     return (
-        <Skills_SC id={"skills"}>
+        <Skills_SC show={show} ref={scrollAnimation_ComponentRef} id={"skills"}>
             <h2 className="h2">{data[language].skills.title}</h2>
+
             <div className="c_grid">
 
                 <div className="child_1">
@@ -117,6 +140,7 @@ const Skills = () => {
                 </div>
 
             </div>
+
         </Skills_SC>
     );
 };
