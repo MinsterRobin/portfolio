@@ -12,6 +12,7 @@ const Exps_Section = styled.div`
     align-items: center;
     width: 100%;
     padding-top: 200px;
+    overflow: hidden;
     
     h2 {
         text-align: center;
@@ -35,22 +36,18 @@ const Card_Grid = styled.div`
     }
 `;
 
-const Deck = styled.div `
+const Deck = styled.hr `
     display: none;
     z-index: 1;
-    height: 240px;
+
     width: 100%;
     max-width: 600px;
-    background-color: #111111;
+    height: 2px;
     
-    .deck_hr {
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(to right, #111111, #FDB7B7 35%, #F9DCDC 50%, #FDB7B7 65%, #111111);
-        box-shadow: 0 -2px 5px #252525, 0 2px 5px #000000;
-        margin: 0;
-        border: transparent;
-    }
+    background: linear-gradient(to right, #111111, #FDB7B7 35%, #F9DCDC 50%, #FDB7B7 65%, #111111);
+    box-shadow: 0 -2px 5px #252525, 0 2px 5px #000000;
+    margin: 0;
+    border: transparent;
     
     @media (min-width: 579px) {
         display: initial;
@@ -78,7 +75,7 @@ const Exps = () => {
                 })}
             </Card_Grid>
             <Deck>
-                <hr className="deck_hr" />
+
             </Deck>
         </Exps_Section>
     );

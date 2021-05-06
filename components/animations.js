@@ -1,4 +1,5 @@
 import styled, {keyframes} from "styled-components";
+import React, {useEffect, useRef, useState} from "react";
 
 const animation_fade_in = keyframes`
     from {
@@ -10,7 +11,12 @@ const animation_fade_in = keyframes`
 
 const FadeIn = styled.div`
     animation: ${animation_fade_in} ${props => props.duration || "0.5s"} ease-in-out;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 `;
+
 const animation_fade_in_up = keyframes`
     from {
         opacity: 0;
@@ -25,6 +31,10 @@ const animation_fade_in_up = keyframes`
 
 const FadeInUp = styled.div`
     animation: ${animation_fade_in_up} ${props => props.duration || "0.5s"} ease-in-out;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 `;
 
 const animation_fade_in_right = keyframes`
@@ -41,8 +51,47 @@ const animation_fade_in_right = keyframes`
 
 const FadeInRight = styled.div`
     animation: ${animation_fade_in_right} ${props => props.duration || "0.5s"} ease-in-out;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 `;
+
+
+const SC_Anim_FirstAppear_FadeInUp = styled.div`
+    opacity: ${props => props.show ? 1 : 0};
+    transform: translate3d(0, ${props => props.show ? 0 : "10%"}, 0);
+    transition: opacity ease-in-out ${props => props.animation_duration || "0.5s"}, transform ease-in-out ${props => props.duration || "0.5s"};
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+`;
+
+const Anim_FirstAppear_FadeInUp = (props) => {
+    const [show, setShow] = useState(false);
+    const scrollAnimation_ComponentRef = useRef(null);
+
+    useEffect(() => {
+        const posYFromTop = element => element.getBoundingClientRect().top;
+        const scrollAnimation_ComponentPosY = posYFromTop(scrollAnimation_ComponentRef.current);
+
+        const onScroll = () => {
+            const currentScrollPos = window.scrollY + window.innerHeight;
+            if (scrollAnimation_ComponentPosY < currentScrollPos) {
+                setShow(true);
+            }
+        };
+
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    });
+
+    return (
+        <SC_Anim_FirstAppear_FadeInUp animation_duration={props.duration} show={show} ref={scrollAnimation_ComponentRef}>{props.children}</SC_Anim_FirstAppear_FadeInUp>
+    );
+};
 
 export default {FadeIn};
 
-export {FadeInUp, FadeInRight, FadeIn};
+export {FadeInUp, FadeInRight, FadeIn, Anim_FirstAppear_FadeInUp};

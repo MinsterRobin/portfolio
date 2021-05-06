@@ -3,7 +3,7 @@ import data from "./data";
 import Language_Context from "./language-context";
 import {v4 as uuidv4} from "uuid";
 import useIsInViewport from "use-is-in-viewport";
-import {FadeIn} from "./animations";
+import {Anim_FirstAppear_FadeInUp, FadeIn} from "./animations";
 import {useRef, useState, useContext, useEffect} from "react";
 
 const Skills_SC = styled.div`
@@ -12,8 +12,7 @@ const Skills_SC = styled.div`
     align-items: center;
     width: 100%;
     padding-top: 200px;
-    opacity: ${props => props.show ? 1 : 0};
-    transition: opacity ease-in-out 2s;
+    text-align: center;
     
     .h2 {
         font-size: 30px;
@@ -90,58 +89,43 @@ const Skills_SC = styled.div`
 const Skills = () => {
     const [language] = useContext(Language_Context);
 
-    const [show, setShow] = useState(false);
+        return (
+            <Anim_FirstAppear_FadeInUp animation_duration="1.5s">
+                <Skills_SC id={"skills"}>
+                    <h2 className="h2">{data[language].skills.title}</h2>
 
-    const scrollAnimation_ComponentRef = useRef(null);
+                    <div className="c_grid">
 
-    useEffect(() => {
-        const posYFromTop = element => element.getBoundingClientRect().top;
-        const scrollAnimation_ComponentPosY = posYFromTop(scrollAnimation_ComponentRef.current);
+                            <div className="child_1">
+                                <div className="c_skill_hero">
+                                    <h3 className="h3">{data[language].skills.developer.title}</h3>
+                                    <img src={data[language].skills.developer.src_logo} alt={data[language].skills.developer.alt_logo} className="img"/>
+                                </div>
+                                <div className="c_skill_list">
+                                    {data[language].skills.developer.skills_list.map((skill) => {
+                                        return(<p key={uuidv4()} className="p">{skill}</p>);
+                                    })}
+                                </div>
+                            </div>
 
-        const onScroll = () => {
-            const currentScrollPos = window.scrollY + window.innerHeight;
-            if (scrollAnimation_ComponentPosY < currentScrollPos) {
-                setShow(true);
-            }
-        };
 
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
-    });
+                            <div className="child_2">
+                                <div className="c_skill_list">
+                                    {data[language].skills.designer.skills_list.map((skill) => {
+                                        return(<p key={uuidv4()} className="p">{skill}</p>);
+                                    })}
+                                </div>
+                                <div className="c_skill_hero">
+                                    <h3 className="h3">{data[language].skills.designer.title}</h3>
+                                    <img src={data[language].skills.designer.src_logo} alt={data[language].skills.designer.alt_logo} className="img"/>
+                                </div>
+                            </div>
 
-    return (
-        <Skills_SC show={show} ref={scrollAnimation_ComponentRef} id={"skills"}>
-            <h2 className="h2">{data[language].skills.title}</h2>
-
-            <div className="c_grid">
-
-                <div className="child_1">
-                    <div className="c_skill_hero">
-                        <h3 className="h3">{data[language].skills.developer.title}</h3>
-                        <img src={data[language].skills.developer.src_logo} alt={data[language].skills.developer.alt_logo} className="img"/>
                     </div>
-                    <div className="c_skill_list">
-                        {data[language].skills.developer.skills_list.map((skill) => {
-                            return(<p key={uuidv4()} className="p">{skill}</p>);
-                        })}
-                    </div>
-                </div>
 
-                <div className="child_2">
-                    <div className="c_skill_list">
-                        {data[language].skills.designer.skills_list.map((skill) => {
-                            return(<p key={uuidv4()} className="p">{skill}</p>);
-                        })}
-                    </div>
-                    <div className="c_skill_hero">
-                        <h3 className="h3">{data[language].skills.designer.title}</h3>
-                        <img src={data[language].skills.designer.src_logo} alt={data[language].skills.designer.alt_logo} className="img"/>
-                    </div>
-                </div>
+                </Skills_SC>
+            </Anim_FirstAppear_FadeInUp>
 
-            </div>
-
-        </Skills_SC>
     );
 };
 
