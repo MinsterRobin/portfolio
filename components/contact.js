@@ -3,6 +3,8 @@ import Language_Context from "./language-context";
 import {useContext, useState} from "react";
 import styled from "styled-components";
 import {CopyToClipboard} from "react-copy-to-clipboard";
+import {Anim_FirstAppear_FadeInUp} from "./animations";
+import FadeInUp from "./Animations/FadeInUp";
 
 const Contact_SC = styled.div`
     display: flex;
@@ -172,11 +174,13 @@ const Contact = () => {
     const [language] = useContext(Language_Context);
     const [isOpen, setIsOpen] = useState(false);
     const [isHover, setIsHover] = useState(false);
-    const [isCopied, setCopied] = useState(false)
+    const [isCopied, setCopied] = useState(false);
 
     return (
         <Contact_SC className="c_section" id={"contact"} >
+
             <h2>{data[language].contact.title}</h2>
+
             <div className="b_content">
                 <ContactInfos_SC isOpen={isOpen}>
                     <div className="c_contact_content">
@@ -196,6 +200,7 @@ const Contact = () => {
                                 <CopyToClipboard text={data.email}>
                                     <img src={"/Copy.svg"} alt="Copy To Clipboard" className="img_copy" onClick={() => {
                                         setCopied(true);
+                                        setIsClicked(true);
                                         setTimeout(() => setCopied(false), 3000);
                                     }}/>
                                 </CopyToClipboard>
@@ -221,6 +226,7 @@ const Contact = () => {
                 </div>
             </div>
         </Contact_SC>
+
     );
 };
 

@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import ReactCursorPosition from "react-cursor-position";
 import Social from "./Social";
 import data from "./data";
+import {Anim_FirstAppear_FadeInUp, FadeInUp} from "./animations";
 
 const Footer_SC = styled.div`
     margin-top: 150px;
@@ -106,9 +107,11 @@ const CursorPositionGetter = (props) => {
                 <div className="c_logo">
                     <img className="logo" src={"/Footer-Logo.svg"} alt="Footer Logo" />
                     <div className="c_eye">
+                        <Anim_FirstAppear_FadeInUp animation_duration="1.5s" width="100%">
                         <Eye eyePos={eyePos} isHover={isHover}>
                             <img src={"/Eye.svg"} alt="logo-eye" />
                         </Eye>
+                        </Anim_FirstAppear_FadeInUp>
                     </div>
                 </div>
 

@@ -2,9 +2,8 @@ import styled from "styled-components";
 import data from "./data";
 import Language_Context from "./language-context";
 import {v4 as uuidv4} from "uuid";
-import useIsInViewport from "use-is-in-viewport";
-import {Anim_FirstAppear_FadeInUp, FadeIn} from "./animations";
-import {useRef, useState, useContext, useEffect} from "react";
+import {Anim_FirstAppear_FadeInUp} from "./animations";
+import {useContext} from "react";
 
 const Skills_SC = styled.div`
     display: flex;
@@ -12,8 +11,7 @@ const Skills_SC = styled.div`
     align-items: center;
     width: 100%;
     padding-top: 200px;
-    text-align: center;
-    
+
     .h2 {
         font-size: 30px;
         font-style: normal;
@@ -90,12 +88,11 @@ const Skills = () => {
     const [language] = useContext(Language_Context);
 
         return (
-            <Anim_FirstAppear_FadeInUp animation_duration="1.5s">
+            <Anim_FirstAppear_FadeInUp animation_duration="1.5s" animation_delay="10000" width="100%">
                 <Skills_SC id={"skills"}>
                     <h2 className="h2">{data[language].skills.title}</h2>
 
                     <div className="c_grid">
-
                             <div className="child_1">
                                 <div className="c_skill_hero">
                                     <h3 className="h3">{data[language].skills.developer.title}</h3>
@@ -120,7 +117,6 @@ const Skills = () => {
                                     <img src={data[language].skills.designer.src_logo} alt={data[language].skills.designer.alt_logo} className="img"/>
                                 </div>
                             </div>
-
                     </div>
 
                 </Skills_SC>

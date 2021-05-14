@@ -4,6 +4,7 @@ import data from "../components/data.js";
 import { v4 as uuidv4 } from 'uuid';
 import Language_Context from "./language-context";
 import {useContext} from "react";
+import {Anim_FirstAppear_FadeInUp} from "./animations";
 
 /*------------------ STYLE ------------------*/
 const Exps_Section = styled.div`
@@ -59,25 +60,27 @@ const Exps = () => {
     const [language] = useContext(Language_Context);
 
     return(
-        <Exps_Section id={"experiences"}>
-            <h2>{data[language].exps.title}</h2>
-            <Card_Grid>
-                {data[language].exps.cards.map((card)=> {
-                    return (
-                        <Exp_Card
-                            key={uuidv4()}
-                            src_logo={card.src_logo} alt_logo={card.alt_logo}
-                            title={card.title} subtitle={card.subtitle}
-                            description={card.description}
-                            technos_list={card.technos_list}
-                        />
-                    )
-                })}
-            </Card_Grid>
-            <Deck>
+        <Anim_FirstAppear_FadeInUp animation_duration="1.5s" width="100%">
+            <Exps_Section id={"experiences"}>
+                <h2>{data[language].exps.title}</h2>
+                <Card_Grid>
+                    {data[language].exps.cards.map((card)=> {
+                        return (
+                            <Exp_Card
+                                key={uuidv4()}
+                                src_logo={card.src_logo} alt_logo={card.alt_logo}
+                                title={card.title} subtitle={card.subtitle}
+                                description={card.description}
+                                technos_list={card.technos_list}
+                            />
+                        )
+                    })}
+                </Card_Grid>
+                <Deck>
 
-            </Deck>
-        </Exps_Section>
+                </Deck>
+            </Exps_Section>
+        </Anim_FirstAppear_FadeInUp>
     );
 };
 

@@ -60,37 +60,45 @@ const FadeInRight = styled.div`
 
 const SC_Anim_FirstAppear_FadeInUp = styled.div`
     opacity: ${props => props.show ? 1 : 0};
-    transform: translate3d(0, ${props => props.show ? 0 : "10%"}, 0);
+    transform: translate3d(0, ${props => props.show ? 0 : "13%"}, 0);
     transition: opacity ease-in-out ${props => props.animation_duration || "0.5s"}, transform ease-in-out ${props => props.duration || "0.5s"};
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+    width: ${props => props.width};
+    height: ${props => props.height};
 `;
 
 const Anim_FirstAppear_FadeInUp = (props) => {
     const [show, setShow] = useState(false);
-    const scrollAnimation_ComponentRef = useRef(null);
+    const componentRef = useRef(null);
 
     useEffect(() => {
-        const posYFromTop = element => element.getBoundingClientRect().top;
-        const scrollAnimation_ComponentPosY = posYFromTop(scrollAnimation_ComponentRef.current);
+        const getComponentPosYFromTop = element => element.getBoundingClientRect().top;
+        const getComponentHeight = element => element.getBoundingClientRect().height;
+        const componentPosYMiddleFromTop = getComponentPosYFromTop(componentRef.current) + (getComponentHeight(componentRef.current) / 2);
 
         const onScroll = () => {
             const currentScrollPos = window.scrollY + window.innerHeight;
-            if (scrollAnimation_ComponentPosY < currentScrollPos) {
-                setShow(true);
+            if (componentPosYMiddleFromTop < currentScrollPos) {
+                const animationDelay = setTimeout(() => setShow(true), props.animation_delay);
             }
         };
 
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
-    });
+    }, []);
 
     return (
-        <SC_Anim_FirstAppear_FadeInUp animation_duration={props.duration} show={show} ref={scrollAnimation_ComponentRef}>{props.children}</SC_Anim_FirstAppear_FadeInUp>
+        <SC_Anim_FirstAppear_FadeInUp
+            animation_duration={props.animation_duration}
+            width={props.width}
+            height={props.height}
+            show={show}
+            ref={componentRef}>
+            {props.children}
+        </SC_Anim_FirstAppear_FadeInUp>
     );
 };
+
+
 
 export default {FadeIn};
 
