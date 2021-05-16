@@ -88,7 +88,7 @@ const Skills = () => {
     const [language] = useContext(Language_Context);
 
         return (
-            <Anim_FirstAppear_FadeInUp animation_duration="1.5s" animation_delay="10000" width="100%">
+            <Anim_FirstAppear_FadeInUp animation_duration="1.5s" width="100%">
                 <Skills_SC id={"skills"}>
                     <h2 className="h2">{data[language].skills.title}</h2>
 
