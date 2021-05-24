@@ -5,6 +5,7 @@ import data from "./data";
 import Mobile_Menu from "./mobile_menu";
 import HamburgerMenu from "./HamburgerMenu";
 import LanguageSelector from "./LanguageSelector";
+import {config, useSpring, animated } from 'react-spring';
 
 const Nav_bar = styled.div`
     z-index: 10;
@@ -89,7 +90,7 @@ const Nav_bar = styled.div`
         right: 22px;
         border-radius: 50%;
         background-color: #F9DCDC;
-        transition: 0.4s ease-in-out;
+        //transition: 0.4s ease-in-out;
     }
     
     .c_underline {
@@ -100,41 +101,41 @@ const Nav_bar = styled.div`
     
     .underline { 
         margin-bottom: 0;
-        margin-right: 0;
+        //margin-right: 0;
         border: none;
         height: 1px;
-        background: linear-gradient(to right, #111111 15%, #FDB7B7 45%, #F9DCDC, #FDB7B7 55%, #171717 85%);
+        background: linear-gradient(to right, #111111 15%, #FDB7B7 45%, #F9DCDC, #FDB7B7 55%, #111111 85%);
         width: 150px;
-        transition: 0.4s ease-in-out;
+        //transition: 0.4s ease-in-out;
     }
     
-    #hover_about:hover ~ .c_underline > hr {
-        margin-right: 510px;
-    }
+    //#hover_about:hover ~ .c_underline > hr {
+    //    margin-right: 510px;
+    //}
+    //
+    //#hover_skills:hover ~ .c_underline > hr {
+    //    margin-right: 360px;
+    //}
+    //
+    //#hover_exps:hover ~ .c_underline > hr {
+    //    margin-right: 150px;
+    //}
     
-    #hover_skills:hover ~ .c_underline > hr {
-        margin-right: 360px;
-    }
-    
-    #hover_exps:hover ~ .c_underline > hr {
-        margin-right: 150px;
-    }
-    
-    #hover_about:hover ~ .c_logo > .eye {
-        right: 27px;
-    }
-    
-    #hover_skills:hover ~ .c_logo > .eye {
-        right: 24px;
-    }
-    
-    #hover_exps:hover ~ .c_logo > .eye {
-        right: 20px;
-    }
-    
-    #hover_contact:hover ~ .c_logo > .eye {
-        right: 17px;
-    }
+    // #hover_about:hover ~ .c_logo > .eye {
+    //     right: 27px;
+    // }
+    //
+    // #hover_skills:hover ~ .c_logo > .eye {
+    //     right: 24px;
+    // }
+    //
+    // #hover_exps:hover ~ .c_logo > .eye {
+    //     right: 20px;
+    // }
+    //
+    // #hover_contact:hover ~ .c_logo > .eye {
+    //     right: 17px;
+    // }
            
     .c_nav_mobile {
         height: 100%;
@@ -170,6 +171,22 @@ const Nav_bar = styled.div`
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [language] = useContext(Language_Context);
+    const [linkHoverPosition, setLinkHover] = useState(
+        {
+            underline_margin_right: "0px",
+            eye_position_right: "22px"
+        }
+    );
+
+    const underlinePropsSpring = useSpring( {
+        marginRight: linkHoverPosition.underline_margin_right,
+        config: config.slow
+    });
+
+    const springProps_Eye = useSpring({
+        right: linkHoverPosition.eye_position_right,
+        config: config.slow
+    });
 
     return (
         <Nav_bar>
@@ -181,37 +198,73 @@ const Navbar = () => {
                         <a
                             href={"/#about"}
                             id="hover_about"
-                            className="link" >
+                            className="link"
+                            onMouseEnter={() => setLinkHover({
+                                underline_margin_right: "510px",
+                                eye_position_right: "27px"
+                            })}
+                            onMouseLeave={() => setLinkHover({
+                                underline_margin_right: "0px",
+                                eye_position_right: "22px"
+                            })}
+                        >
                             {data[language].nav.about}
                         </a>
 
                         <a
                             href="/#skills"
                             className="link"
-                            id="hover_skills" >
+                            id="hover_skills"
+                            onMouseEnter={() => setLinkHover({
+                                underline_margin_right: "360px",
+                                eye_position_right: "24px"
+                            })}
+                            onMouseLeave={() => setLinkHover({
+                                underline_margin_right: "0px",
+                                eye_position_right: "22px"
+                            })}
+                        >
                             {data[language].nav.skills}
                         </a>
 
                         <a
                             href="/#experiences"
                             className="link"
-                            id="hover_exps" >
+                            id="hover_exps"
+                            onMouseEnter={() => setLinkHover({
+                                underline_margin_right: "150px",
+                                eye_position_right: "20px"
+                            })}
+                            onMouseLeave={() => setLinkHover({
+                                underline_margin_right: "0px",
+                                eye_position_right: "22px"
+                            })}
+                        >
                             {data[language].nav.exps}
                         </a>
 
                         <a
                             href="/#contact"
                             className="link"
-                            id="hover_contact" >
+                            id="hover_contact"
+                            onMouseEnter={() => setLinkHover({
+                                underline_margin_right: "0px",
+                                eye_position_right: "17px"
+                            })}
+                            onMouseLeave={() => setLinkHover({
+                                underline_margin_right: "0px",
+                                eye_position_right: "22px"
+                            })}
+                        >
                             {data[language].nav.contact}
                         </a>
 
                         <div className="c_logo">
                             <img className="logo" src={"/Logo-No_eye.svg"} alt="Logo" />
-                            <div className="eye" />
+                            <animated.div style={springProps_Eye} className="eye" />
                         </div>
 
-                        <div className="c_underline"><hr className="underline"/></div>
+                        <div className="c_underline"><animated.hr style={underlinePropsSpring} className="underline"/></div>
                     </div>
                     <LanguageSelector/>
                 </div>

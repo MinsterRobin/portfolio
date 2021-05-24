@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { v4 as uuidv4 } from 'uuid';
+import {animated} from "react-spring";
+import SpringAnimation from "./Animations/SpringAnimation";
+import useIsInViewport from "./useIsInViewport";
+import {useRef} from "react";
 
-const Exp_Card = styled.div`
+const Exp_Card_SC = animated(styled.div`
     width: 100%;
     max-width: 450px;
     perspective: 400px;
@@ -84,11 +88,14 @@ const Exp_Card = styled.div`
         font-weight: 300;
         text-decoration: underline;
     }
-`;
+`);
 
 const Exp_card = (props) => {
-  return (
-      <Exp_Card>
+    const wrapperRef = useRef(null);
+    const isInViewport = useIsInViewport(wrapperRef);
+
+    return (
+        <Exp_Card_SC ref={wrapperRef} style={SpringAnimation(isInViewport, props.appearance_animation_delay)}>
             <div className="c_card">
                 <div className="card_content">
                     <img className="img" src={props.src_logo} alt={props.alt_logo}/>
@@ -107,7 +114,7 @@ const Exp_card = (props) => {
                     </div>
                 </div>
             </div>
-      </Exp_Card>
+      </Exp_Card_SC>
   );
 };
 

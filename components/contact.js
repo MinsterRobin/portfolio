@@ -1,12 +1,13 @@
 import data from "./data";
 import Language_Context from "./language-context";
-import {useContext, useState} from "react";
+import {useContext, useRef, useState} from "react";
 import styled from "styled-components";
 import {CopyToClipboard} from "react-copy-to-clipboard";
-import {Anim_FirstAppear_FadeInUp} from "./animations";
-import FadeInUp from "./Animations/FadeInUp";
+import useIsInViewport from "./useIsInViewport";
+import {animated} from "react-spring";
+import SpringAnimation from "./Animations/SpringAnimation";
 
-const Contact_SC = styled.div`
+const Contact_SC = animated(styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,14 +39,6 @@ const Contact_SC = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-    }
-    
-    h2 {
-        text-align: center;
-        font-size: 24px;
-        font-style: normal;
-        letter-spacing: 0.2em;
-        margin: 0 0 80px 0;
     }
     
     h3 {
@@ -93,7 +86,15 @@ const Contact_SC = styled.div`
         border: none;
         cursor: pointer;
     }
-`;
+`);
+
+const Text_SC = animated(styled.div`
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        letter-spacing: 0.2em;
+        margin: 0 0 80px 0; 
+`);
 
 const ContactInfos_SC = styled.div`    
     position: absolute;
@@ -176,12 +177,14 @@ const Contact = () => {
     const [isHover, setIsHover] = useState(false);
     const [isCopied, setCopied] = useState(false);
 
+    const wrapperRef = useRef(null);
+    const isInViewport = useIsInViewport(wrapperRef);
+
     return (
-        <Contact_SC className="c_section" id={"contact"} >
+        <Contact_SC className="c_section" id={"contact"} ref={wrapperRef}>
+            <Text_SC as="h2" style={SpringAnimation(isInViewport)}>{data[language].contact.title}</Text_SC>
 
-            <h2>{data[language].contact.title}</h2>
-
-            <div className="b_content">
+            <animated.div style={SpringAnimation(isInViewport,300)} className="b_content">
                 <ContactInfos_SC isOpen={isOpen}>
                     <div className="c_contact_content">
 
@@ -200,7 +203,6 @@ const Contact = () => {
                                 <CopyToClipboard text={data.email}>
                                     <img src={"/Copy.svg"} alt="Copy To Clipboard" className="img_copy" onClick={() => {
                                         setCopied(true);
-                                        setIsClicked(true);
                                         setTimeout(() => setCopied(false), 3000);
                                     }}/>
                                 </CopyToClipboard>
@@ -224,7 +226,7 @@ const Contact = () => {
                         <div className="button" onClick={() => {setIsOpen(!isOpen)}}>{data[language].contact.button}</div>
                     </div>
                 </div>
-            </div>
+            </animated.div>
         </Contact_SC>
 
     );

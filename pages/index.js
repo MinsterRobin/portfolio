@@ -7,7 +7,7 @@ import Skills from "../components/skills";
 import Contact from "../components/contact";
 import Exps from "../components/exps";
 import Footer_js from "../components/footer"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Language_Context from "../components/language-context";
 import styled from "styled-components";
 
@@ -46,6 +46,15 @@ const App_SC = styled.div`
 
 const Home = () => {
     const [language, setLanguage] = useState("fr");
+    const [hasMounted, setHasMounted] = React.useState(false);
+
+    useEffect(() => {
+        setHasMounted(true);
+    },[]);
+
+    if (!hasMounted) {
+        return null;
+    }
 
     return (
         <App_SC>
@@ -83,6 +92,7 @@ const Home = () => {
 
                 <title>{data.title}</title>
             </Head>
+
             <Language_Context.Provider value={[language, setLanguage]}>
                 <main className="mainContainer">
                     <Navbar />
@@ -92,7 +102,7 @@ const Home = () => {
                         <Skills />
                         <Separator />
                         <Exps/>
-                        <Separator/>
+
                         <Contact />
                     </div>
                     <Footer_js />

@@ -3,11 +3,13 @@ import styled from "styled-components";
 import data from "../components/data.js";
 import { v4 as uuidv4 } from 'uuid';
 import Language_Context from "./language-context";
-import {useContext} from "react";
-import {Anim_FirstAppear_FadeInUp} from "./animations";
+import {useContext, useRef} from "react";
+import useIsInViewport from "./useIsInViewport";
+import SpringAnimation from "./Animations/SpringAnimation";
+import {animated} from "react-spring";
 
 /*------------------ STYLE ------------------*/
-const Exps_Section = styled.div`
+const Exps_Section = animated(styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +24,7 @@ const Exps_Section = styled.div`
         letter-spacing: 0.2em;
         margin: 0 0 80px 0;
     }
-`;
+`);
 
 const Card_Grid = styled.div`
     display: grid;
@@ -58,29 +60,32 @@ const Deck = styled.hr `
 /*------------------ COMPONENT ------------------*/
 const Exps = () => {
     const [language] = useContext(Language_Context);
+    const wrapperRef = useRef(null);
+    const isInViewport = useIsInViewport(wrapperRef);
+    console.log(isInViewport);
 
     return(
-        <Anim_FirstAppear_FadeInUp animation_duration="1.5s" width="100%">
-            <Exps_Section id={"experiences"}>
-                <h2>{data[language].exps.title}</h2>
-                <Card_Grid>
-                    {data[language].exps.cards.map((card)=> {
-                        return (
-                            <Exp_Card
-                                key={uuidv4()}
-                                src_logo={card.src_logo} alt_logo={card.alt_logo}
-                                title={card.title} subtitle={card.subtitle}
-                                description={card.description}
-                                technos_list={card.technos_list}
-                            />
-                        )
-                    })}
-                </Card_Grid>
-                <Deck>
+        <Exps_Section id={"experiences"} ref={wrapperRef}>
+            <animated.h2 style={SpringAnimation(isInViewport)}>{data[language].exps.title}</animated.h2>
+            <Card_Grid>
+                {data[language].exps.cards.map((card, index)=> {
+                    return (
+                        <Exp_Card
+                            key={uuidv4()}
+                            src_logo={card.src_logo} alt_logo={card.alt_logo}
+                            title={card.title} subtitle={card.subtitle}
+                            description={card.description}
+                            technos_list={card.technos_list}
+                            appearance_animation_trigger={isInViewport}
+                            appearance_animation_delay={200 + ((data[language].exps.cards.length * 100) - (index * 100) )}
+                        />
+                    )
+                })}
+            </Card_Grid>
+            <Deck>
 
-                </Deck>
-            </Exps_Section>
-        </Anim_FirstAppear_FadeInUp>
+            </Deck>
+        </Exps_Section>
     );
 };
 
