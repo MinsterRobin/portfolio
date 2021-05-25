@@ -172,7 +172,7 @@ const CopyLabel_SC = styled.p`
 `;
 
 const Contact = () => {
-    const [language] = useContext(Language_Context);
+    const [languageContext] = useContext(Language_Context);
     const [isOpen, setIsOpen] = useState(false);
     const [isHover, setIsHover] = useState(false);
     const [isCopied, setCopied] = useState(false);
@@ -182,13 +182,13 @@ const Contact = () => {
 
     return (
         <Contact_SC className="c_section" id={"contact"} ref={wrapperRef}>
-            <Text_SC as="h2" style={SpringAnimation(isInViewport)}>{data[language].contact.title}</Text_SC>
+            <Text_SC as="h2" style={SpringAnimation(isInViewport)}>{data[languageContext.currentLanguage].contact.title}</Text_SC>
 
             <animated.div style={SpringAnimation(isInViewport,300)} className="b_content">
                 <ContactInfos_SC isOpen={isOpen}>
                     <div className="c_contact_content">
 
-                        <h3 className="info_h3">{data[language].contact.h3_info}</h3>
+                        <h3 className="info_h3">{data[languageContext.currentLanguage].contact.h3_info}</h3>
 
                         <Email_SC>
 
@@ -213,7 +213,7 @@ const Contact = () => {
                                 <Underline_SC isHover={!isHover} direction={"right"}/>
                             </div>
 
-                            <CopyLabel_SC isCopied={isCopied}>{data[language].contact.copy_label}</CopyLabel_SC>
+                            <CopyLabel_SC isCopied={isCopied}>{data[languageContext.currentLanguage].contact.copy_label}</CopyLabel_SC>
 
                         </Email_SC>
 
@@ -221,9 +221,9 @@ const Contact = () => {
                 </ContactInfos_SC>
 
                 <div className="c_contact_content">
-                    <h3>{data[language].contact.h3}</h3>
+                    <h3>{data[languageContext.currentLanguage].contact.h3}</h3>
                     <div className="b_button">
-                        <div className="button" onClick={() => {setIsOpen(!isOpen)}}>{data[language].contact.button}</div>
+                        <div className="button" onClick={() => {setIsOpen(!isOpen)}}>{data[languageContext.currentLanguage].contact.button}</div>
                     </div>
                 </div>
             </animated.div>

@@ -130,7 +130,7 @@ const About_SC = styled.div`
 `;
 
 const About = () => {
-    const [language] = useContext(Language_Context);
+    const [languageContext] = useContext(Language_Context);
 
     return (
 
@@ -140,7 +140,7 @@ const About = () => {
                 <div className="child_1">
                     <FadeInRight>
                     <h1 className="h1">
-                        {data[language].about.h1}<br/><span className="h1_span">{data[language].about.h1_span}</span>
+                        {data[languageContext.currentLanguage].about.h1}<br/><span className="h1_span">{data[languageContext.currentLanguage].about.h1_span}</span>
                     </h1>
                     </FadeInRight>
                 </div>
@@ -159,7 +159,7 @@ const About = () => {
 
                 <div className="child_3">
                     <FadeInRight duration="750ms">
-                        <h2 className="h2">{data[language].about.h2}</h2>
+                        <h2 className="h2">{data[languageContext.currentLanguage].about.h2}</h2>
                     </FadeInRight>
                 </div>
 

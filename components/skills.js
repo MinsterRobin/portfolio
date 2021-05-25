@@ -2,8 +2,9 @@ import styled from "styled-components";
 import data from "./data";
 import Language_Context from "./language-context";
 import {v4 as uuidv4} from "uuid";
-import {Anim_FirstAppear_FadeInUp} from "./animations";
 import {useContext} from "react";
+import ChangingText_SC from "./Text";
+
 
 const Skills_SC = styled.div`
     display: flex;
@@ -84,44 +85,50 @@ const Skills_SC = styled.div`
     }        
 `;
 
+const ChangingText_H2_SC = styled(ChangingText_SC)`
+    font-size: 30px;
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    margin: 0 0 80px 0;
+`;
+
 const Skills = () => {
-    const [language] = useContext(Language_Context);
+    const [languageContext] = useContext(Language_Context);
 
         return (
-            <Anim_FirstAppear_FadeInUp animation_duration="1.5s" width="100%">
-                <Skills_SC id={"skills"}>
-                    <h2 className="h2">{data[language].skills.title}</h2>
+            <Skills_SC id={"skills"}>
 
-                    <div className="c_grid">
-                            <div className="child_1">
-                                <div className="c_skill_hero">
-                                    <h3 className="h3">{data[language].skills.developer.title}</h3>
-                                    <img src={data[language].skills.developer.src_logo} alt={data[language].skills.developer.alt_logo} className="img"/>
-                                </div>
-                                <div className="c_skill_list">
-                                    {data[language].skills.developer.skills_list.map((skill) => {
-                                        return(<p key={uuidv4()} className="p">{skill}</p>);
-                                    })}
-                                </div>
-                            </div>
+                <ChangingText_H2_SC textOpacity={languageContext.textOpacity}> {data[languageContext.currentLanguage].skills.title}</ChangingText_H2_SC>
 
-
-                            <div className="child_2">
-                                <div className="c_skill_list">
-                                    {data[language].skills.designer.skills_list.map((skill) => {
-                                        return(<p key={uuidv4()} className="p">{skill}</p>);
-                                    })}
-                                </div>
-                                <div className="c_skill_hero">
-                                    <h3 className="h3">{data[language].skills.designer.title}</h3>
-                                    <img src={data[language].skills.designer.src_logo} alt={data[language].skills.designer.alt_logo} className="img"/>
-                                </div>
-                            </div>
+                <div className="c_grid">
+                    <div className="child_1">
+                        <div className="c_skill_hero">
+                            <h3 className="h3">{data[languageContext.currentLanguage].skills.developer.title}</h3>
+                            <img src={data[languageContext.currentLanguage].skills.developer.src_logo} alt={data[languageContext.currentLanguage].skills.developer.alt_logo} className="img"/>
+                        </div>
+                        <div className="c_skill_list">
+                            {data[languageContext.currentLanguage].skills.developer.skills_list.map((skill) => {
+                                return(<p key={uuidv4()} className="p">{skill}</p>);
+                            })}
+                        </div>
                     </div>
 
-                </Skills_SC>
-            </Anim_FirstAppear_FadeInUp>
 
+                    <div className="child_2">
+                        <div className="c_skill_list">
+                            {data[languageContext.currentLanguage].skills.designer.skills_list.map((skill) => {
+                                return(<p key={uuidv4()} className="p">{skill}</p>);
+                            })}
+                        </div>
+                        <div className="c_skill_hero">
+                            <h3 className="h3">{data[languageContext.currentLanguage].skills.designer.title}</h3>
+                            <img src={data[languageContext.currentLanguage].skills.designer.src_logo} alt={data[languageContext.currentLanguage].skills.designer.alt_logo} className="img"/>
+                        </div>
+                    </div>
+                </div>
+
+            </Skills_SC>
     );
 };
 

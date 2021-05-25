@@ -170,7 +170,7 @@ const Nav_bar = styled.div`
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const [language] = useContext(Language_Context);
+    const [languageContext] = useContext(Language_Context);
     const [linkHoverPosition, setLinkHover] = useState(
         {
             underline_margin_right: "0px",
@@ -208,7 +208,7 @@ const Navbar = () => {
                                 eye_position_right: "22px"
                             })}
                         >
-                            {data[language].nav.about}
+                            {data[languageContext.currentLanguage].nav.about}
                         </a>
 
                         <a
@@ -224,7 +224,7 @@ const Navbar = () => {
                                 eye_position_right: "22px"
                             })}
                         >
-                            {data[language].nav.skills}
+                            {data[languageContext.currentLanguage].nav.skills}
                         </a>
 
                         <a
@@ -240,7 +240,7 @@ const Navbar = () => {
                                 eye_position_right: "22px"
                             })}
                         >
-                            {data[language].nav.exps}
+                            {data[languageContext.currentLanguage].nav.exps}
                         </a>
 
                         <a
@@ -256,7 +256,7 @@ const Navbar = () => {
                                 eye_position_right: "22px"
                             })}
                         >
-                            {data[language].nav.contact}
+                            {data[languageContext.currentLanguage].nav.contact}
                         </a>
 
                         <div className="c_logo">

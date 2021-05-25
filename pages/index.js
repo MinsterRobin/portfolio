@@ -45,7 +45,10 @@ const App_SC = styled.div`
 
 
 const Home = () => {
-    const [language, setLanguage] = useState("fr");
+    const [languageContext, setLanguageContext] = useState({
+        currentLanguage: "fr",
+        textOpacity: "1"
+    });
     const [hasMounted, setHasMounted] = React.useState(false);
 
     useEffect(() => {
@@ -93,7 +96,7 @@ const Home = () => {
                 <title>{data.title}</title>
             </Head>
 
-            <Language_Context.Provider value={[language, setLanguage]}>
+            <Language_Context.Provider value={[languageContext, setLanguageContext]}>
                 <main className="mainContainer">
                     <Navbar />
                     <div className="c_main_content">

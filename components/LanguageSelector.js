@@ -15,19 +15,34 @@ const LanguageSelector_SC = styled.div`
 `;
 
 const SpanEn_SC = styled.span`
-    text-decoration: ${props => props.language === "eng" ? 'overline' : ''};
+    text-decoration: ${props => props.currentLanguage === "eng" ? 'overline' : ''};
+    opacity: ${props => props.textOpacity};
+    transition: opacity ease-in-out 300ms;
 `;
 
 const SpanFr_SC = styled.span`
-    text-decoration: ${props => props.language === "fr" ? 'overline' : ''};
+    text-decoration: ${props => props.currentLanguage === "fr" ? 'overline' : ''};
+    opacity: ${props => props.textOpacity};
+    transition: opacity ease-in-out 300ms;
 `;
 
 const LanguageSelector = () => {
-    const [language, setLanguage] = useContext(Language_Context);
+    const [languageContext, setLanguageContext] = useContext(Language_Context);
 
     return (
-        <LanguageSelector_SC onClick={ () => {setLanguage(language === "fr" ? "eng" : "fr")} } >
-            <SpanEn_SC language={language} >EN</SpanEn_SC> | <SpanFr_SC language={language} >FR</SpanFr_SC>
+        <LanguageSelector_SC onClick={ () => {
+            setLanguageContext({
+                ...languageContext,
+                textOpacity: "0"
+            });
+            setTimeout(() => {
+                setLanguageContext({
+                    currentLanguage: languageContext.currentLanguage === "fr" ? "eng" : "fr",
+                    textOpacity: "1"
+                });
+            },300);
+        }}>
+            <SpanEn_SC textOpacity={languageContext.textOpacity} currentLanguage={languageContext.currentLanguage} >EN</SpanEn_SC> | <SpanFr_SC textOpacity={languageContext.textOpacity} currentLanguage={languageContext.currentLanguage} >FR</SpanFr_SC>
         </LanguageSelector_SC>
     );
 };

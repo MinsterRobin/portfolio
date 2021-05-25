@@ -51,7 +51,7 @@ const Mobile_Menu_SC = styled.div`
 `;
 
 const Mobile_Menu = (props) => {
-    const [language] = useContext(Language_Context);
+    const [languageContext] = useContext(Language_Context);
 
     return(
         <Mobile_Menu_SC open={props.open}>
@@ -60,25 +60,25 @@ const Mobile_Menu = (props) => {
                     href="/#about"
                     className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
-                    {data[language].nav.about}
+                    {data[languageContext.currentLanguage].nav.about}
                 </a>
                 <a
                     href="/#skills"
                     className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
-                    {data[language].nav.skills}
+                    {data[languageContext.currentLanguage].nav.skills}
                 </a>
                 <a
                     href="/#experiences"
                     className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
-                    {data[language].nav.exps}
+                    {data[languageContext.currentLanguage].nav.exps}
                 </a>
                 <a
                     href="/#contact"
                     className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
-                    {data[language].nav.contact}
+                    {data[languageContext.currentLanguage].nav.contact}
                 </a>
                 <LanguageSelector />
             </div>

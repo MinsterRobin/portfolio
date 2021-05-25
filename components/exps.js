@@ -59,16 +59,16 @@ const Deck = styled.hr `
 
 /*------------------ COMPONENT ------------------*/
 const Exps = () => {
-    const [language] = useContext(Language_Context);
+    const [languageContext] = useContext(Language_Context);
     const wrapperRef = useRef(null);
     const isInViewport = useIsInViewport(wrapperRef);
     console.log(isInViewport);
 
     return(
         <Exps_Section id={"experiences"} ref={wrapperRef}>
-            <animated.h2 style={SpringAnimation(isInViewport)}>{data[language].exps.title}</animated.h2>
+            <animated.h2 style={SpringAnimation(isInViewport)}>{data[languageContext.currentLanguage].exps.title}</animated.h2>
             <Card_Grid>
-                {data[language].exps.cards.map((card, index)=> {
+                {data[languageContext.currentLanguage].exps.cards.map((card, index)=> {
                     return (
                         <Exp_Card
                             key={uuidv4()}
@@ -77,7 +77,7 @@ const Exps = () => {
                             description={card.description}
                             technos_list={card.technos_list}
                             appearance_animation_trigger={isInViewport}
-                            appearance_animation_delay={200 + ((data[language].exps.cards.length * 100) - (index * 100) )}
+                            appearance_animation_delay={200 + ((data[languageContext.currentLanguage].exps.cards.length * 100) - (index * 100) )}
                         />
                     )
                 })}
