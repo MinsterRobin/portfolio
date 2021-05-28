@@ -3,8 +3,11 @@ import data from "./data";
 import Language_Context from "./language-context";
 import {v4 as uuidv4} from "uuid";
 import React, {useContext, useRef} from "react";
+import useIsInViewport from "./useIsInViewport";
 import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
-import SectionTitle_SC from "./SectionTitle";
+import SectionTitle from "./SectionTitle";
+import SpringAnimation from "./Animations/SpringAnimation";
+import {animated} from "react-spring";
 
 const Skills_SC = styled.div`
     display: flex;
@@ -87,40 +90,42 @@ const C_Skill_List_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
 
 const Skills = () => {
     const [languageContext] = useContext(Language_Context);
-    const wrapperRef = useRef(null);
+    const wrapperSkillsLine1_Ref = useRef(null);
+    const wrapperSkillsLine2_Ref = useRef(null);
+    const skillsLine1_isInViewport = useIsInViewport(wrapperSkillsLine1_Ref);
+    const skillsLine2_isInViewport = useIsInViewport(wrapperSkillsLine2_Ref);
 
         return (
-            <Skills_SC id={"skills"} ref={wrapperRef}>
-                <Text_LanguageBased_OpacityTransition_SC>
-                    <SectionTitle_SC>{data[languageContext.currentLanguage].skills.title}</SectionTitle_SC>
-                </Text_LanguageBased_OpacityTransition_SC>
+            <Skills_SC id={"skills"}>
 
-                <div className="c_grid">
-                    <div className="child_1">
+                <SectionTitle>{data[languageContext.currentLanguage].skills.title}</SectionTitle>
+
+                <animated.div className="c_grid">
+                    <div className="child_1" ref={wrapperSkillsLine1_Ref}>
                         <div className="c_skill_hero">
-                            <H3_SC>{data[languageContext.currentLanguage].skills.developer.title}</H3_SC>
-                            <img src={data[languageContext.currentLanguage].skills.developer.src_logo} alt={data[languageContext.currentLanguage].skills.developer.alt_logo} className="img"/>
+                            <H3_SC><animated.div style={SpringAnimation(skillsLine1_isInViewport, 300)}>{data[languageContext.currentLanguage].skills.developer.title}</animated.div></H3_SC>
+                            <animated.img style={SpringAnimation(skillsLine1_isInViewport, 400)} src={data[languageContext.currentLanguage].skills.developer.src_logo} alt={data[languageContext.currentLanguage].skills.developer.alt_logo} className="img"/>
                         </div>
                         <C_Skill_List_SC>
-                            {data[languageContext.currentLanguage].skills.developer.skills_list.map((skill) => {
-                                return(<p className="p" key={uuidv4()}>{skill}</p>);
+                            {data[languageContext.currentLanguage].skills.developer.skills_list.map((skill, index) => {
+                                return(<animated.p style={SpringAnimation(skillsLine1_isInViewport, (500 + 100 * index))} className="p" key={uuidv4()}>{skill}</animated.p>);
                             })}
                         </C_Skill_List_SC>
                     </div>
 
 
-                    <div className="child_2">
+                    <div className="child_2" ref={wrapperSkillsLine2_Ref}>
                         <C_Skill_List_SC>
-                            {data[languageContext.currentLanguage].skills.designer.skills_list.map((skill) => {
-                                return(<p className="p" key={uuidv4()} >{skill}</p>);
+                            {data[languageContext.currentLanguage].skills.designer.skills_list.map((skill, index) => {
+                                return(<animated.p style={SpringAnimation(skillsLine2_isInViewport, (500 + 100 * index))} className="p" key={uuidv4()} >{skill}</animated.p>);
                             })}
                         </C_Skill_List_SC>
                         <div className="c_skill_hero">
-                            <H3_SC className="h3">{data[languageContext.currentLanguage].skills.designer.title}</H3_SC>
-                            <img src={data[languageContext.currentLanguage].skills.designer.src_logo} alt={data[languageContext.currentLanguage].skills.designer.alt_logo} className="img"/>
+                            <H3_SC className="h3"><animated.div style={SpringAnimation(skillsLine2_isInViewport, 300)}>{data[languageContext.currentLanguage].skills.designer.title}</animated.div></H3_SC>
+                            <animated.img style={SpringAnimation(skillsLine2_isInViewport, 400)} src={data[languageContext.currentLanguage].skills.designer.src_logo} alt={data[languageContext.currentLanguage].skills.designer.alt_logo} className="img"/>
                         </div>
                     </div>
-                </div>
+                </animated.div>
 
             </Skills_SC>
     );

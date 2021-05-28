@@ -8,7 +8,7 @@ const UseIsInViewport = (ref) => {
             const {current} = ref;
             const componentPosYFromTop = current.getBoundingClientRect().top;
             const componentHeight = current.getBoundingClientRect().height;
-            const componentPosYMiddleFromTop = componentPosYFromTop + (componentHeight);
+            const componentPosYMiddleFromTop = componentPosYFromTop + (componentHeight / 2);
 
             const onScroll = () => {
                 const currentScrollPos = window.scrollY + window.innerHeight;

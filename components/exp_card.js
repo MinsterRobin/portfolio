@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from 'uuid';
 import {animated, useSpring} from "react-spring";
 import SpringAnimation from "./Animations/SpringAnimation";
-import useIsInViewport from "./useIsInViewport";
-import {useRef, useState} from "react";
+import {useState} from "react";
 import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 
 const Exp_Card_SC = animated(styled.div`
@@ -98,6 +97,7 @@ const Exp_card = (props) => {
             onMouseEnter={() => setCardIsHover(true)}
             onMouseLeave={() => setCardIsHover(false)}
             style={SpringAnimation(props.appearance_animation_trigger, props.appearance_animation_delay)}>
+
             <animated.div className="c_card" style={springProps_ExpCard_UpTranslation}>
                 <div className="card_content">
                     <img className="img" src={props.src_logo} alt={props.alt_logo}/>

@@ -4,10 +4,8 @@ import data from "../components/data.js";
 import Language_Context from "./language-context";
 import React, {useContext, useRef} from "react";
 import useIsInViewport from "./useIsInViewport";
-import SpringAnimation from "./Animations/SpringAnimation";
 import {animated} from "react-spring";
-import SectionTitle_SC from "./SectionTitle";
-import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
+import SectionTitle from "./SectionTitle";
 
 /*------------------ STYLE ------------------*/
 const Exps_Section = animated(styled.div`
@@ -66,9 +64,8 @@ const Exps = () => {
 
     return(
         <Exps_Section id={"experiences"} ref={wrapperRef}>
-            <Text_LanguageBased_OpacityTransition_SC>
-                <SectionTitle_SC style={SpringAnimation(isInViewport)}>{data[languageContext.currentLanguage].exps.title}</SectionTitle_SC>
-            </Text_LanguageBased_OpacityTransition_SC>
+
+            <SectionTitle>{data[languageContext.currentLanguage].exps.title}</SectionTitle>
 
             <Card_Grid>
                 {data[languageContext.currentLanguage].exps.cards.map((card, index)=> {

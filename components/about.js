@@ -2,11 +2,9 @@ import styled from "styled-components";
 import data from "../components/data.js";
 import Language_Context from "../components/language-context";
 import {useContext, useRef} from "react";
-import {FadeIn, FadeInUp, FadeInRight} from "./animations";
 import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 import {useSpring, animated, config} from "react-spring";
 import useIsInViewport from "./useIsInViewport";
-import SpringAnimation from "./Animations/SpringAnimation";
 
 const About_SC = styled.div`
     display: flex;
@@ -147,8 +145,6 @@ const H2_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
 
 const About = () => {
     const [languageContext] = useContext(Language_Context);
-    const wrapperRef = useRef(null);
-    const isInViewport = useIsInViewport(wrapperRef);
 
     const springProps_FadeIn_Right = (delay) => {
         return useSpring({
@@ -186,7 +182,7 @@ const About = () => {
 
     return (
 
-        <About_SC id="about" ref={wrapperRef}>
+        <About_SC id="about">
             <div className="c_grid">
 
                 <animated.div className="child_1" style={springProps_FadeIn_Right(200)}>

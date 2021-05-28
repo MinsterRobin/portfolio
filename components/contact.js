@@ -6,7 +6,7 @@ import {CopyToClipboard} from "react-copy-to-clipboard";
 import useIsInViewport from "./useIsInViewport";
 import {animated} from "react-spring";
 import SpringAnimation from "./Animations/SpringAnimation";
-import SectionTitle_SC from "./SectionTitle";
+import SectionTitle from "./SectionTitle";
 import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 
 const Contact_SC = animated(styled.div`
@@ -175,12 +175,11 @@ const Contact = () => {
     const isInViewport = useIsInViewport(wrapperRef);
 
     return (
-        <Contact_SC className="c_section" id={"contact"} ref={wrapperRef}>
-            <Text_LanguageBased_OpacityTransition_SC>
-                <SectionTitle_SC as="h2" style={SpringAnimation(isInViewport)}>{data[languageContext.currentLanguage].contact.title}</SectionTitle_SC>
-            </Text_LanguageBased_OpacityTransition_SC>
+        <Contact_SC className="c_section" id={"contact"}>
 
-            <animated.div style={SpringAnimation(isInViewport,400)} className="b_content">
+            <SectionTitle>{data[languageContext.currentLanguage].contact.title}</SectionTitle>
+
+            <animated.div ref={wrapperRef} style={SpringAnimation(isInViewport,300)} className="b_content">
                 <ContactInfos_SC isOpen={isOpen}>
                     <div className="c_contact_content">
 
