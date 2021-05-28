@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { v4 as uuidv4 } from 'uuid';
-import {animated} from "react-spring";
+import {animated, useSpring} from "react-spring";
 import SpringAnimation from "./Animations/SpringAnimation";
 import useIsInViewport from "./useIsInViewport";
-import {useRef} from "react";
+import {useRef, useState} from "react";
+import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 
 const Exp_Card_SC = animated(styled.div`
     width: 100%;
@@ -12,7 +13,6 @@ const Exp_Card_SC = animated(styled.div`
     
     .c_card {
         min-height: 390px;
-        transition: all 0.8s;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -21,13 +21,8 @@ const Exp_Card_SC = animated(styled.div`
         border-radius: 16px;
         background: linear-gradient(180deg, #F9DCDC 0%, rgba(225, 167, 165, 0) 72.4%);
         box-shadow: 0 -10px 8px #0B0B0B;
-    
-        transform: rotateX(-1deg);
     }
     
-    .c_card:hover {
-        transform: scale(1.02, 1.02) translate(0, -240px) rotateX(1deg);
-    }
     
     .c_card::before {
         content: "";
@@ -58,20 +53,8 @@ const Exp_Card_SC = animated(styled.div`
         flex-direction: column;
     }
     
-    .h3 {
-        font-size: 20px;
-        font-weight: 500;
-        margin: 0;
-    }
-    
     .hr {
         width: 150px;
-    }
-    
-    .p {
-        font-size: 16px;
-        font-weight: 300;
-        margin: 0;
     }
     
     .c_list_technos {
@@ -90,22 +73,41 @@ const Exp_Card_SC = animated(styled.div`
     }
 `);
 
+const H3_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;  
+`;
+
+const P_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+`;
+
 const Exp_card = (props) => {
-    const wrapperRef = useRef(null);
-    const isInViewport = useIsInViewport(wrapperRef);
+    const [cardIsHover, setCardIsHover] = useState(false);
+
+    const springProps_ExpCard_UpTranslation = useSpring({
+        transform: cardIsHover ? "scale(1.02, 1.02) translate(0, -240px) rotateX(1deg)" : "scale(1, 1) translate(0, 0px) rotateX(-1deg)",
+        config: { mass: 1, tension: 100, friction: 16 }
+    });
 
     return (
-        <Exp_Card_SC ref={wrapperRef} style={SpringAnimation(isInViewport, props.appearance_animation_delay)}>
-            <div className="c_card">
+        <Exp_Card_SC
+            onMouseEnter={() => setCardIsHover(true)}
+            onMouseLeave={() => setCardIsHover(false)}
+            style={SpringAnimation(props.appearance_animation_trigger, props.appearance_animation_delay)}>
+            <animated.div className="c_card" style={springProps_ExpCard_UpTranslation}>
                 <div className="card_content">
                     <img className="img" src={props.src_logo} alt={props.alt_logo}/>
 
                     <div className="c_title">
-                        <h3 className="h3">{props.title}</h3>
+                        <H3_SC className="h3">{props.title}</H3_SC>
                         <hr className="hr" />
-                        <h3 className="h3">{props.subtitle}</h3>
+                        <H3_SC className="h3">{props.subtitle}</H3_SC>
                     </div>
-                    <p className="p">{props.description}</p>
+                    <P_SC className="p">{props.description}</P_SC>
 
                     <div className="c_list_technos">
                         {props.technos_list.map((item) => {
@@ -113,7 +115,7 @@ const Exp_card = (props) => {
                         })}
                     </div>
                 </div>
-            </div>
+            </animated.div>
       </Exp_Card_SC>
   );
 };

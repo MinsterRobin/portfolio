@@ -3,6 +3,7 @@ import data from "../components/data.js";
 import Language_Context from "../components/language-context";
 import {useContext} from "react";
 import {FadeIn, FadeInUp, FadeInRight} from "./animations";
+import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 
 const About_SC = styled.div`
     display: flex;
@@ -64,13 +65,6 @@ const About_SC = styled.div`
         height: 100%;
     }
     
-    .h1 {
-        font-weight: 600;
-        font-size: 40px;
-        letter-spacing: 0.08em;
-        margin: auto;
-    }
-    
     .h1_span {
         font-weight: normal;
         font-size: 24px;
@@ -129,6 +123,19 @@ const About_SC = styled.div`
     }
 `;
 
+const H1_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 0.08em;
+    margin: auto;
+`;
+
+const H2_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    font-weight: normal;
+    font-size: 16px;
+    margin: auto;
+`;
+
 const About = () => {
     const [languageContext] = useContext(Language_Context);
 
@@ -139,9 +146,9 @@ const About = () => {
 
                 <div className="child_1">
                     <FadeInRight>
-                    <h1 className="h1">
+                    <H1_SC className="h1">
                         {data[languageContext.currentLanguage].about.h1}<br/><span className="h1_span">{data[languageContext.currentLanguage].about.h1_span}</span>
-                    </h1>
+                    </H1_SC>
                     </FadeInRight>
                 </div>
 
@@ -159,7 +166,7 @@ const About = () => {
 
                 <div className="child_3">
                     <FadeInRight duration="750ms">
-                        <h2 className="h2">{data[languageContext.currentLanguage].about.h2}</h2>
+                        <H2_SC className="h2">{data[languageContext.currentLanguage].about.h2}</H2_SC>
                     </FadeInRight>
                 </div>
 

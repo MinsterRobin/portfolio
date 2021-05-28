@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Language_Context from "../components/language-context";
 import data from "./data";
 import LanguageSelector from "./LanguageSelector";
+import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 
 const Mobile_Menu_SC = styled.div`
     position: absolute;    
@@ -37,15 +38,15 @@ const Mobile_Menu_SC = styled.div`
     @media (min-width: 992px) {
         display: none;
     }
+`;
+
+const MobileLink_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
     
-    .mobile_link {
-        font-size: 20px;
-        font-weight: 400;
-        cursor: pointer;
-    }
-    
-    .mobile_link:hover {
-        opacity: 0.85;
+    &:hover {
+        opacity: 0.7;
         transition: 200ms ease-in-out opacity;
     }
 `;
@@ -56,31 +57,37 @@ const Mobile_Menu = (props) => {
     return(
         <Mobile_Menu_SC open={props.open}>
             <div className="c_mobile_links">
-                <a
+
+                <MobileLink_SC
                     href="/#about"
                     className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
                     {data[languageContext.currentLanguage].nav.about}
-                </a>
-                <a
+                </MobileLink_SC>
+
+                <MobileLink_SC
                     href="/#skills"
                     className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
                     {data[languageContext.currentLanguage].nav.skills}
-                </a>
-                <a
+                </MobileLink_SC>
+
+                <MobileLink_SC
                     href="/#experiences"
                     className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
                     {data[languageContext.currentLanguage].nav.exps}
-                </a>
-                <a
+                </MobileLink_SC>
+
+                <MobileLink_SC
                     href="/#contact"
                     className="mobile_link"
                     onClick={() => props.setOpen(!open)} >
                     {data[languageContext.currentLanguage].nav.contact}
-                </a>
+                </MobileLink_SC>
+
                 <LanguageSelector />
+
             </div>
         </Mobile_Menu_SC>
     );

@@ -9,7 +9,7 @@ import Exps from "../components/exps";
 import Footer_js from "../components/footer"
 import React, {useEffect, useState} from "react";
 import Language_Context from "../components/language-context";
-import styled from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
 
 const App_SC = styled.div`
     .mainContainer {
@@ -43,11 +43,11 @@ const App_SC = styled.div`
     }
 `;
 
-
 const Home = () => {
     const [languageContext, setLanguageContext] = useState({
         currentLanguage: "fr",
-        textOpacity: "1"
+        languageTransition_Animation_TextOpacity: "1",
+        languageTransition_Animation_Delay: "300ms"
     });
     const [hasMounted, setHasMounted] = React.useState(false);
 
@@ -95,22 +95,22 @@ const Home = () => {
 
                 <title>{data.title}</title>
             </Head>
-
-            <Language_Context.Provider value={[languageContext, setLanguageContext]}>
-                <main className="mainContainer">
-                    <Navbar />
-                    <div className="c_main_content">
-                        <About />
-                        <Separator />
-                        <Skills />
-                        <Separator />
-                        <Exps/>
-
-                        <Contact />
-                    </div>
-                    <Footer_js />
-                </main>
-            </Language_Context.Provider>
+            <ThemeProvider theme={languageContext}>
+                <Language_Context.Provider value={[languageContext, setLanguageContext]}>
+                    <main className="mainContainer">
+                        <Navbar />
+                        <div className="c_main_content">
+                            <About />
+                            <Separator />
+                            <Skills />
+                            <Separator />
+                            <Exps/>
+                            <Contact />
+                        </div>
+                        <Footer_js />
+                    </main>
+                </Language_Context.Provider>
+            </ThemeProvider>
         </App_SC>
     )
 };

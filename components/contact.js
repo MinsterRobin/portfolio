@@ -1,11 +1,13 @@
 import data from "./data";
 import Language_Context from "./language-context";
-import {useContext, useRef, useState} from "react";
+import React, {useContext, useRef, useState} from "react";
 import styled from "styled-components";
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import useIsInViewport from "./useIsInViewport";
 import {animated} from "react-spring";
 import SpringAnimation from "./Animations/SpringAnimation";
+import SectionTitle_SC from "./SectionTitle";
+import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 
 const Contact_SC = animated(styled.div`
     display: flex;
@@ -39,15 +41,6 @@ const Contact_SC = animated(styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-    }
-    
-    h3 {
-        z-index: 0;
-        text-align: center;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: normal;
-        margin: 0;
     }
     
     .b_button {     
@@ -86,14 +79,6 @@ const Contact_SC = animated(styled.div`
         border: none;
         cursor: pointer;
     }
-`);
-
-const Text_SC = animated(styled.div`
-        text-align: center;
-        font-size: 24px;
-        font-style: normal;
-        letter-spacing: 0.2em;
-        margin: 0 0 80px 0; 
 `);
 
 const ContactInfos_SC = styled.div`    
@@ -171,6 +156,15 @@ const CopyLabel_SC = styled.p`
     transition: opacity ease-in-out 500ms;
 `;
 
+const H3_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    z-index: 0;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+`;
+
 const Contact = () => {
     const [languageContext] = useContext(Language_Context);
     const [isOpen, setIsOpen] = useState(false);
@@ -182,13 +176,15 @@ const Contact = () => {
 
     return (
         <Contact_SC className="c_section" id={"contact"} ref={wrapperRef}>
-            <Text_SC as="h2" style={SpringAnimation(isInViewport)}>{data[languageContext.currentLanguage].contact.title}</Text_SC>
+            <Text_LanguageBased_OpacityTransition_SC>
+                <SectionTitle_SC as="h2" style={SpringAnimation(isInViewport)}>{data[languageContext.currentLanguage].contact.title}</SectionTitle_SC>
+            </Text_LanguageBased_OpacityTransition_SC>
 
-            <animated.div style={SpringAnimation(isInViewport,300)} className="b_content">
+            <animated.div style={SpringAnimation(isInViewport,400)} className="b_content">
                 <ContactInfos_SC isOpen={isOpen}>
                     <div className="c_contact_content">
 
-                        <h3 className="info_h3">{data[languageContext.currentLanguage].contact.h3_info}</h3>
+                        <H3_SC>{data[languageContext.currentLanguage].contact.h3_info}</H3_SC>
 
                         <Email_SC>
 
@@ -213,7 +209,11 @@ const Contact = () => {
                                 <Underline_SC isHover={!isHover} direction={"right"}/>
                             </div>
 
-                            <CopyLabel_SC isCopied={isCopied}>{data[languageContext.currentLanguage].contact.copy_label}</CopyLabel_SC>
+                            <CopyLabel_SC isCopied={isCopied}>
+                                <Text_LanguageBased_OpacityTransition_SC>
+                                    {data[languageContext.currentLanguage].contact.copy_label}
+                                </Text_LanguageBased_OpacityTransition_SC>
+                            </CopyLabel_SC>
 
                         </Email_SC>
 
@@ -221,9 +221,13 @@ const Contact = () => {
                 </ContactInfos_SC>
 
                 <div className="c_contact_content">
-                    <h3>{data[languageContext.currentLanguage].contact.h3}</h3>
+                    <H3_SC>{data[languageContext.currentLanguage].contact.h3}</H3_SC>
                     <div className="b_button">
-                        <div className="button" onClick={() => {setIsOpen(!isOpen)}}>{data[languageContext.currentLanguage].contact.button}</div>
+                        <div className="button" onClick={() => {setIsOpen(!isOpen)}}>
+                            <Text_LanguageBased_OpacityTransition_SC>
+                                {data[languageContext.currentLanguage].contact.button}
+                            </Text_LanguageBased_OpacityTransition_SC>
+                        </div>
                     </div>
                 </div>
             </animated.div>

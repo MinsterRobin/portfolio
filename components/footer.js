@@ -3,7 +3,8 @@ import React, {useState} from "react";
 import ReactCursorPosition from "react-cursor-position";
 import Social from "./Social";
 import data from "./data";
-import {Anim_FirstAppear_FadeInUp, FadeInUp} from "./animations";
+import {Anim_FirstAppear_FadeInUp} from "./animations";
+import {useSpring, animated} from "react-spring";
 
 const Footer_SC = styled.div`
     margin-top: 150px;
@@ -54,11 +55,9 @@ const Footer_SC = styled.div`
     }
 `;
 
-const Eye = styled.div`
+const Eye = animated(styled.div`
     position: absolute;
-    transform: translateX(${props => props.eyePos.x}) translateY(${props => props.eyePos.y});
-    transition: ${props => props.isHover ? "0ms" : "300ms"} ease-out;
-`;
+`);
 
 const mapRange = (amount, fromMin, fromMax, toMin, toMax) => {
     return toMin + (amount - fromMin) * (toMax - toMin) / (fromMax - fromMin);
@@ -76,8 +75,14 @@ const Footer = () => {
 };
 
 const CursorPositionGetter = (props) => {
-    const [eyePos, setEyePos] = useState({x: "45px", y: "13px"});
+    const originEyePos = {x: "45px", y: "13px"};
+    const [eyePos, setEyePos] = useState(originEyePos);
     const [isHover, setIsHover] = useState(false);
+
+    const springProps_Eye = useSpring({
+        transform: isHover ? "translateX(" + eyePos.x + ") translateY(" + eyePos.y + ")" : "translateX(" + originEyePos.x + ") translateY(" + originEyePos.y + ")",
+        config: { mass: 0.5, tension: 300, friction: 24 }
+    });
 
     const {
         elementDimensions: {
@@ -97,18 +102,15 @@ const CursorPositionGetter = (props) => {
                         y: mapRange(y, 0, height, 0, 28) + "px",
                     });
                 }}
-            onMouseEnter={() => {setTimeout(()=> setIsHover(true), 300)}}
-            onMouseLeave={() => {
-                setEyePos({x:"45px", y:"13px"});
-                setIsHover( false);
-            }}
+            onMouseEnter={() => {setIsHover(true)}}
+            onMouseLeave={() => {setIsHover(false)}}
         >
             <div className="c_footer_content">
                 <div className="c_logo">
                     <img className="logo" src={"/Footer-Logo.svg"} alt="Footer Logo" />
                     <div className="c_eye">
                         <Anim_FirstAppear_FadeInUp animation_duration="1.5s" width="100%">
-                        <Eye eyePos={eyePos} isHover={isHover}>
+                        <Eye style={springProps_Eye} eyePos={eyePos} isHover={isHover}>
                             <img src={"/Eye.svg"} alt="logo-eye" />
                         </Eye>
                         </Anim_FirstAppear_FadeInUp>

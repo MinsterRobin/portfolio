@@ -2,9 +2,9 @@ import styled from "styled-components";
 import data from "./data";
 import Language_Context from "./language-context";
 import {v4 as uuidv4} from "uuid";
-import {useContext} from "react";
-import ChangingText_SC from "./Text";
-
+import React, {useContext, useRef} from "react";
+import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
+import SectionTitle_SC from "./SectionTitle";
 
 const Skills_SC = styled.div`
     display: flex;
@@ -13,13 +13,6 @@ const Skills_SC = styled.div`
     width: 100%;
     padding-top: 200px;
 
-    .h2 {
-        font-size: 30px;
-        font-style: normal;
-        letter-spacing: 0.2em;
-        margin: 0 0 80px 0;
-    }
-    
     .c_grid {
         display: grid;
         grid-template-rows: repeat(2, 1fr);
@@ -64,65 +57,66 @@ const Skills_SC = styled.div`
         align-items: center;
     }
     
-    .h3 {
-        font-size: 20px;
-        font-weight: normal;
-        text-align: center;
-        text-decoration: underline;
-        margin: 0;
-        height: 40%;
-    }
-    
     .p {
         margin: 3px 0;
         font-size: 16px;
         font-weight: normal;
         text-align: center;
     }
-    
+       
     .img {
         height: 50px;
     }        
 `;
 
-const ChangingText_H2_SC = styled(ChangingText_SC)`
-    font-size: 30px;
-    font-style: normal;
-    font-weight: bold;
-    letter-spacing: 0.2em;
-    margin: 0 0 80px 0;
+const H3_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: underline;
+    margin: 0;
+    height: 40%;
+`;
+
+const C_Skill_List_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Skills = () => {
     const [languageContext] = useContext(Language_Context);
+    const wrapperRef = useRef(null);
 
         return (
-            <Skills_SC id={"skills"}>
-
-                <ChangingText_H2_SC textOpacity={languageContext.textOpacity}> {data[languageContext.currentLanguage].skills.title}</ChangingText_H2_SC>
+            <Skills_SC id={"skills"} ref={wrapperRef}>
+                <Text_LanguageBased_OpacityTransition_SC>
+                    <SectionTitle_SC>{data[languageContext.currentLanguage].skills.title}</SectionTitle_SC>
+                </Text_LanguageBased_OpacityTransition_SC>
 
                 <div className="c_grid">
                     <div className="child_1">
                         <div className="c_skill_hero">
-                            <h3 className="h3">{data[languageContext.currentLanguage].skills.developer.title}</h3>
+                            <H3_SC>{data[languageContext.currentLanguage].skills.developer.title}</H3_SC>
                             <img src={data[languageContext.currentLanguage].skills.developer.src_logo} alt={data[languageContext.currentLanguage].skills.developer.alt_logo} className="img"/>
                         </div>
-                        <div className="c_skill_list">
+                        <C_Skill_List_SC>
                             {data[languageContext.currentLanguage].skills.developer.skills_list.map((skill) => {
-                                return(<p key={uuidv4()} className="p">{skill}</p>);
+                                return(<p className="p" key={uuidv4()}>{skill}</p>);
                             })}
-                        </div>
+                        </C_Skill_List_SC>
                     </div>
 
 
                     <div className="child_2">
-                        <div className="c_skill_list">
+                        <C_Skill_List_SC>
                             {data[languageContext.currentLanguage].skills.designer.skills_list.map((skill) => {
-                                return(<p key={uuidv4()} className="p">{skill}</p>);
+                                return(<p className="p" key={uuidv4()} >{skill}</p>);
                             })}
-                        </div>
+                        </C_Skill_List_SC>
                         <div className="c_skill_hero">
-                            <h3 className="h3">{data[languageContext.currentLanguage].skills.designer.title}</h3>
+                            <H3_SC className="h3">{data[languageContext.currentLanguage].skills.designer.title}</H3_SC>
                             <img src={data[languageContext.currentLanguage].skills.designer.src_logo} alt={data[languageContext.currentLanguage].skills.designer.alt_logo} className="img"/>
                         </div>
                     </div>

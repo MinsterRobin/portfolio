@@ -6,6 +6,7 @@ import Mobile_Menu from "./mobile_menu";
 import HamburgerMenu from "./HamburgerMenu";
 import LanguageSelector from "./LanguageSelector";
 import {config, useSpring, animated } from 'react-spring';
+import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 
 const Nav_bar = styled.div`
     z-index: 10;
@@ -46,13 +47,6 @@ const Nav_bar = styled.div`
         width: 660px;
         margin-top: 13px;
         height: 40px;
-    }
-    
-    .link {
-        width: 150px;
-        cursor: pointer;
-        text-align: center;
-        font-size: 16px;
     }
     
     .link:hover {
@@ -106,37 +100,8 @@ const Nav_bar = styled.div`
         height: 1px;
         background: linear-gradient(to right, #111111 15%, #FDB7B7 45%, #F9DCDC, #FDB7B7 55%, #111111 85%);
         width: 150px;
-        //transition: 0.4s ease-in-out;
     }
-    
-    //#hover_about:hover ~ .c_underline > hr {
-    //    margin-right: 510px;
-    //}
-    //
-    //#hover_skills:hover ~ .c_underline > hr {
-    //    margin-right: 360px;
-    //}
-    //
-    //#hover_exps:hover ~ .c_underline > hr {
-    //    margin-right: 150px;
-    //}
-    
-    // #hover_about:hover ~ .c_logo > .eye {
-    //     right: 27px;
-    // }
-    //
-    // #hover_skills:hover ~ .c_logo > .eye {
-    //     right: 24px;
-    // }
-    //
-    // #hover_exps:hover ~ .c_logo > .eye {
-    //     right: 20px;
-    // }
-    //
-    // #hover_contact:hover ~ .c_logo > .eye {
-    //     right: 17px;
-    // }
-           
+             
     .c_nav_mobile {
         height: 100%;
         width: 100%;
@@ -168,6 +133,13 @@ const Nav_bar = styled.div`
     }
 `;
 
+const A_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
+    width: 150px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+`;
+
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [languageContext] = useContext(Language_Context);
@@ -185,7 +157,7 @@ const Navbar = () => {
 
     const springProps_Eye = useSpring({
         right: linkHoverPosition.eye_position_right,
-        config: config.slow
+        config: config.stiff
     });
 
     return (
@@ -195,10 +167,9 @@ const Navbar = () => {
                 <div className="c_nav_desktop">
                     <p className="name">Robin Minster</p>
                     <div className="c_links">
-                        <a
+                        <A_SC as="a"
                             href={"/#about"}
                             id="hover_about"
-                            className="link"
                             onMouseEnter={() => setLinkHover({
                                 underline_margin_right: "510px",
                                 eye_position_right: "27px"
@@ -209,11 +180,10 @@ const Navbar = () => {
                             })}
                         >
                             {data[languageContext.currentLanguage].nav.about}
-                        </a>
+                        </A_SC>
 
-                        <a
+                        <A_SC as="a"
                             href="/#skills"
-                            className="link"
                             id="hover_skills"
                             onMouseEnter={() => setLinkHover({
                                 underline_margin_right: "360px",
@@ -225,11 +195,10 @@ const Navbar = () => {
                             })}
                         >
                             {data[languageContext.currentLanguage].nav.skills}
-                        </a>
+                        </A_SC>
 
-                        <a
+                        <A_SC as="a"
                             href="/#experiences"
-                            className="link"
                             id="hover_exps"
                             onMouseEnter={() => setLinkHover({
                                 underline_margin_right: "150px",
@@ -241,11 +210,10 @@ const Navbar = () => {
                             })}
                         >
                             {data[languageContext.currentLanguage].nav.exps}
-                        </a>
+                        </A_SC>
 
-                        <a
+                        <A_SC as="a"
                             href="/#contact"
-                            className="link"
                             id="hover_contact"
                             onMouseEnter={() => setLinkHover({
                                 underline_margin_right: "0px",
@@ -257,7 +225,7 @@ const Navbar = () => {
                             })}
                         >
                             {data[languageContext.currentLanguage].nav.contact}
-                        </a>
+                        </A_SC>
 
                         <div className="c_logo">
                             <img className="logo" src={"/Logo-No_eye.svg"} alt="Logo" />

@@ -1,12 +1,13 @@
 import Exp_Card from "../components/exp_card";
 import styled from "styled-components";
 import data from "../components/data.js";
-import { v4 as uuidv4 } from 'uuid';
 import Language_Context from "./language-context";
-import {useContext, useRef} from "react";
+import React, {useContext, useRef} from "react";
 import useIsInViewport from "./useIsInViewport";
 import SpringAnimation from "./Animations/SpringAnimation";
 import {animated} from "react-spring";
+import SectionTitle_SC from "./SectionTitle";
+import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
 
 /*------------------ STYLE ------------------*/
 const Exps_Section = animated(styled.div`
@@ -62,29 +63,29 @@ const Exps = () => {
     const [languageContext] = useContext(Language_Context);
     const wrapperRef = useRef(null);
     const isInViewport = useIsInViewport(wrapperRef);
-    console.log(isInViewport);
 
     return(
         <Exps_Section id={"experiences"} ref={wrapperRef}>
-            <animated.h2 style={SpringAnimation(isInViewport)}>{data[languageContext.currentLanguage].exps.title}</animated.h2>
+            <Text_LanguageBased_OpacityTransition_SC>
+                <SectionTitle_SC style={SpringAnimation(isInViewport)}>{data[languageContext.currentLanguage].exps.title}</SectionTitle_SC>
+            </Text_LanguageBased_OpacityTransition_SC>
+
             <Card_Grid>
                 {data[languageContext.currentLanguage].exps.cards.map((card, index)=> {
                     return (
                         <Exp_Card
-                            key={uuidv4()}
+                            key={index}
                             src_logo={card.src_logo} alt_logo={card.alt_logo}
                             title={card.title} subtitle={card.subtitle}
                             description={card.description}
                             technos_list={card.technos_list}
                             appearance_animation_trigger={isInViewport}
-                            appearance_animation_delay={200 + ((data[languageContext.currentLanguage].exps.cards.length * 100) - (index * 100) )}
+                            appearance_animation_delay={200 + ((data[languageContext.currentLanguage].exps.cards.length * 200) - (index * 200) )}
                         />
                     )
                 })}
             </Card_Grid>
-            <Deck>
-
-            </Deck>
+            <Deck/>
         </Exps_Section>
     );
 };
