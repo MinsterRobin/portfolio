@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import data from "../components/data.js";
 import Language_Context from "../components/language-context";
-import {useContext} from "react";
+import {useContext, useRef} from "react";
 import {FadeIn, FadeInUp, FadeInRight} from "./animations";
 import Text_LanguageBased_OpacityTransition_SC from "./Text_LanguageBased_OpacityTransition_SC";
+import {useSpring, animated, config} from "react-spring";
+import useIsInViewport from "./useIsInViewport";
+import SpringAnimation from "./Animations/SpringAnimation";
 
 const About_SC = styled.div`
     display: flex;
@@ -23,10 +26,15 @@ const About_SC = styled.div`
     }
     
     .child_1 {
-        overflow: hidden;
+        position: relative;
     }
+    
+    .child_2 {
+        position: relative;
+    }
+    
     .child_3 {
-        overflow: hidden;
+        position: relative;
     }
     
     .b_img {
@@ -39,6 +47,7 @@ const About_SC = styled.div`
         border-radius: 5px;
         background: linear-gradient(to left, #F9DCDC 0%, #FDB7B7 35.94%, #131313 100%, #111111 100%);
         box-shadow: 7px 0 15px #232323, -10px 0 15px #0B0B0B;
+        z-index: 1;
     }
     
     .b_img::before {
@@ -138,37 +147,65 @@ const H2_SC = styled(Text_LanguageBased_OpacityTransition_SC)`
 
 const About = () => {
     const [languageContext] = useContext(Language_Context);
+    const wrapperRef = useRef(null);
+    const isInViewport = useIsInViewport(wrapperRef);
+
+    const springProps_FadeIn_Right = (delay) => {
+        return useSpring({
+            from: {
+                transform: "translate(-10%, 0)",
+                opacity: 0,
+                overflow: "hidden",
+            },
+            to: {
+                transform: "translate(0, 0)",
+                opacity: 1,
+                overflow: "hidden",
+            },
+            overflow: "hidden",
+            delay: delay ? delay : 200,
+            config: config.slow,
+        });
+    };
+
+    const springProps_FadeIn_Top = (delay) => {
+        return useSpring({
+            from: {
+                transform: "translate(0, 10%)",
+                opacity: 0
+            },
+            to: {
+                transform: "translate(0, 0)",
+                opacity: 1
+            },
+            delay: delay ? delay : 200,
+            config: config.slow,
+        });
+    };
+
 
     return (
 
-        <About_SC id="about">
+        <About_SC id="about" ref={wrapperRef}>
             <div className="c_grid">
 
-                <div className="child_1">
-                    <FadeInRight>
+                <animated.div className="child_1" style={springProps_FadeIn_Right(200)}>
                     <H1_SC className="h1">
                         {data[languageContext.currentLanguage].about.h1}<br/><span className="h1_span">{data[languageContext.currentLanguage].about.h1_span}</span>
                     </H1_SC>
-                    </FadeInRight>
-                </div>
+                </animated.div>
 
                 <div className="child_2">
-                    <FadeIn duration="500ms">
-                    <div className="b_img">
-                        <div className="c_img">
-                            <FadeInUp duration="1s">
+                    <div  className="b_img">
+                        <animated.div style={springProps_FadeIn_Top(400)} className="c_img">
                             <img className="img" src={"/Portfolio-Logo_Big.svg"} alt="Logo Large"/>
-                            </FadeInUp>
-                        </div>
+                        </animated.div>
                     </div>
-                    </FadeIn>
                 </div>
 
-                <div className="child_3">
-                    <FadeInRight duration="750ms">
-                        <H2_SC className="h2">{data[languageContext.currentLanguage].about.h2}</H2_SC>
-                    </FadeInRight>
-                </div>
+                <animated.div className="child_3" style={springProps_FadeIn_Right(600)}>
+                    <H2_SC className="h2">{data[languageContext.currentLanguage].about.h2}</H2_SC>
+                </animated.div>
 
             </div>
         </About_SC>
