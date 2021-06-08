@@ -95,6 +95,7 @@ const Home = () => {
 
                 <title>{data.title}</title>
             </Head>
+            
             <ThemeProvider theme={languageContext}>
                 <Language_Context.Provider value={[languageContext, setLanguageContext]}>
                     <main className="mainContainer">

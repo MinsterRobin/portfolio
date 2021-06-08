@@ -62,7 +62,7 @@ const data = {
                     alt_logo: "Logo Sopra-Steria",
                     title: "Développeur Back-End",
                     subtitle: "Stage technicien",
-                    description: "Sopra Steria a été retenue fin 2012 pour réaliser l’architecture et l’intégration du Système d’Information des Armées (SIA). Dans le but d’optimiser l’indutrialisation du projet et sa gestion, Sopra Steria développe ses propres outils couplés à la suite logiciel IBM Jazz. J’ai pu participer au développement de ces outils.",
+                    description: "Sopra Steria a été retenue fin 2012 pour réaliser l’architecture et l’intégration du Système d’Information des Armées (SIA). Dans le but d’optimiser l’industrialisation du projet et sa gestion, Sopra Steria développe ses propres outils couplés à la suite logiciel IBM Jazz. J’ai pu participer au développement de ces outils.",
                     technos_list: ["Docker","SoapUI","IBM Jazz","Jenkins","JSON","XML","Java"]
                 },
                 {
