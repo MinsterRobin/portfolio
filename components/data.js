@@ -71,7 +71,7 @@ const data = {
                     title: "Développeur Back-End",
                     subtitle: "Alternant technicien",
                     description: "J’ai pu intégrer un projet initié en 2009 consistant à fournir un suivi technique de l’application SIM@T (Système d’Information de la MAintenance Terrestre) dans le but de le maintenir en condition opérationnelle en le modernisant et en le corrigeant selon les demandes de la SIMMT.",
-                    technos_list: ["SoapUI","SVN","Oracle SQL Develoer","Tomcat","Maven","J2EE","IntelliJ","ALM HP"]
+                    technos_list: ["SoapUI","SVN","Oracle SQL Developer","Tomcat","Maven","J2EE","IntelliJ","ALM HP"]
                 }
             ]
         },
