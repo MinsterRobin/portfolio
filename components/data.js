@@ -33,9 +33,11 @@ const data = {
         },
 
         about: {
-            h1: "Hello ! Je suis Robin.",
-            h1_span: "Je suis un développeur Web full-stack.",
-            h2: "Jeune auto-entrepreneur passionné par l’informatique et les nouvelles technologies, je suis titulaire d’un diplôme d’ingénieur spécialisé en génie logiciel. En tant que développeur React, je me propose pour mener à bien vos projets !"
+            h1: "Hello ! Je suis Robin Minster.",
+            h1_span: "Je suis développeur Web",
+            h2: "Ingénieur spécialisé en informatique et réseaux, je suis développeur web Front-End. " +
+                "Passionné, curieux et professionnel, toujours à la recherche d’expériences passionnantes et enrichissantes, tant sur le plan technique que le plan humain, je serais heureux de réaliser, avec vous, votre projet web. " +
+                "Au plaisir d'échanger sur vos projets, a bientôt ! "
         },
 
         skills: {
@@ -44,10 +46,10 @@ const data = {
                 title: "Développeur",
                 src_logo: "/Pf-Developer_Icon.svg",
                 alt_logo: "Developer_Icon",
-                skills_list:["React.js","Styled Components","Express","MongoDB","MySQL","Git"]
+                skills_list:["React.js", "Vue.js", "Next.js", "Sass", "Styled Components", "react-spring"]
             },
             designer: {
-                title: "Désigneur",
+                title: "Designer",
                 src_logo: "/Pf-Designer_Icon.svg",
                 alt_logo: "Designer_Icon",
                 skills_list:["Figma","Dessin Vectoriel","Mockup","Wireframing","UI Design"]
@@ -97,7 +99,9 @@ const data = {
         about: {
             h1: "Hi ! I'm Robin.",
             h1_span: "I’m a full-stack Web developer.",
-            h2: "My name is Robin Minster, a young freelancer passionate about IT and new technologies, I have an engineering degree specializing in software engineering. As a React.js full-stack web developer, I propose to achieve your projects !"
+            h2: "Engineer specializing in IT and networks, I am a Front-End web developer." +
+                "Passionate, curious and professional, always looking for exciting and enriching experiences, both technically and humanly, I would be happy to carry out your web project with you." +
+                "Looking forward to discussing your projects, see you soon!"
         },
 
         skills: {
@@ -106,7 +110,7 @@ const data = {
                 title: "Developer",
                 src_logo: "/Pf-Developer_Icon.svg",
                 alt_logo: "Developer_Icon",
-                skills_list:["React.js","Styled Components","Express","MongoDB","MySQL","Git"]
+                skills_list:["React.js", "Vue.js", "Next.js", "Sass", "Styled Components", "react-spring"]
             },
             designer: {
                 title: "Designer",
