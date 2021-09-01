@@ -98,7 +98,7 @@ const data = {
 
         about: {
             h1: "Hi ! I'm Robin.",
-            h1_span: "I’m a full-stack Web developer.",
+            h1_span: "I’m a Web developer.",
             h2: "Engineer specializing in IT and networks, I am a Front-End web developer." +
                 "Passionate, curious and professional, always looking for exciting and enriching experiences, both technically and humanly, I would be happy to carry out your web project with you." +
                 "Looking forward to discussing your projects, see you soon!"
