@@ -7,7 +7,7 @@ html, body {
   margin: 0;
   background-color: #111111;
   color: white;
-  font-family: "Inter", serif; /*DEBUG*/
+  font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
 }
 
