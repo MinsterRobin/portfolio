@@ -2,7 +2,6 @@ const data = {
     title: "Robin Minster - Frontend Freelance Developer",
     url: "https://robin-minster.fr",
     email: "minster.robin.pro@gmail.com",
-    test: "oui",
     socials_list: [
         {
             key: "10",
